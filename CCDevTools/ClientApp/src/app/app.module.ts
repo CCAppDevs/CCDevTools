@@ -14,6 +14,7 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { DataService } from './data.service';
 import { ProjectListComponent } from './Project/project-list/project-list.component';
+import { ProjectDetailComponent } from './Project/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProjectListComponent } from './Project/project-list/project-list.compon
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ProjectListComponent
+    ProjectListComponent,
+    ProjectDetailComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,6 +34,7 @@ import { ProjectListComponent } from './Project/project-list/project-list.compon
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'projects', component: ProjectListComponent, canActivate: [AuthorizeGuard] },
+      { path: 'projects/:id', component: ProjectDetailComponent, canActivate: [AuthorizeGuard] },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
     ])
