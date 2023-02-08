@@ -25,7 +25,10 @@ import { ProjectDetailComponent } from './Project/project-detail/project-detail.
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ProjectListComponent
+    ProjectListComponent,
+    ProjectDetailComponent,
+    TicketsComponent,
+    TicketDetailsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
