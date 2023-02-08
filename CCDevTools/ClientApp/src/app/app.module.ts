@@ -16,6 +16,7 @@ import { DataService } from './data.service';
 import { ProjectListComponent } from './Project/project-list/project-list.component';
 import { TicketsComponent } from './Ticket/tickets/tickets.component';
 import { TicketDetailsComponent } from './Ticket/ticket-details/ticket-details.component';
+import { ProjectDetailComponent } from './Project/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,7 @@ import { TicketDetailsComponent } from './Ticket/ticket-details/ticket-details.c
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ProjectListComponent,
-    TicketsComponent
+    ProjectListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,6 +37,7 @@ import { TicketDetailsComponent } from './Ticket/ticket-details/ticket-details.c
       { path: 'tickets', component: TicketsComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/:id', component: TicketDetailsComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects', component: ProjectListComponent, canActivate: [AuthorizeGuard] },
+      { path: 'projects/:id', component: ProjectDetailComponent, canActivate: [AuthorizeGuard] },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
     ])
