@@ -8,11 +8,14 @@ import { DataService } from '../../data.service';
 })
 export class ProjectListComponent implements OnInit {
 
+  projects: any[] = [];
+
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
     this.data.getAllProjects().subscribe(result => {
       console.log(result);
+      this.projects = result;
     })
   }
 
