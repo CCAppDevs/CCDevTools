@@ -24,4 +24,8 @@ export class DataService {
   getAllTickets(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/tickets`);
   }
+
+  getTicketById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/projects/${id}`);
+  }
 }
