@@ -24,7 +24,7 @@ export class DataService {
   getAllTickets(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/tickets`);
   }
-  //changed parameter from "projects" to "tickets"
+
   getTicketById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/tickets/${id}`);
   }
