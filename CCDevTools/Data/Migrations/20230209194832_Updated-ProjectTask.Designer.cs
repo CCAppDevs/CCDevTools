@@ -4,6 +4,7 @@ using CCDevTools.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CCDevTools.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230209194832_Updated-ProjectTask")]
+    partial class UpdatedProjectTask
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,7 +120,7 @@ namespace CCDevTools.Data.Migrations
                     b.ToTable("Projects");
                 });
 
-            modelBuilder.Entity("CCDevTools.Models.ProjectTaskBoard", b =>
+            modelBuilder.Entity("CCDevTools.Models.ProjectTask", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -138,7 +141,7 @@ namespace CCDevTools.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TaskBoards");
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("CCDevTools.Models.Ticket", b =>

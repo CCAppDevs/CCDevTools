@@ -11,6 +11,7 @@ namespace CCDevTools.Data
 
         public DbSet<Project> Projects { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<ProjectTaskBoard> TaskBoards { get; set; }
 
         public ApplicationDbContext(DbContextOptions options, IOptions<OperationalStoreOptions> operationalStoreOptions)
             : base(options, operationalStoreOptions)
