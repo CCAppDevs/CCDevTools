@@ -1,1 +1,8 @@
-<p>tickets works!</p>
+<h1>Tickets</h1>
+<div *ngIf="tickets.length > 0" class="card-deck">
+  <div *ngFor="let ticket of tickets" class="card">
+    <p class="card-text">{{ ticket.description }}</p>
+  </div>
+</div>
+
+<pre>{{ tickets | json }}</pre>

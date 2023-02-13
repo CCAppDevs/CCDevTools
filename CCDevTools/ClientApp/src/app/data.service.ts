@@ -28,4 +28,12 @@ export class DataService {
   getTicketById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/tickets/${id}`);
   }
+
+  createNewTicket(ticket: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/tickets`, ticket);
+  }
+
+  updateTicket(ticket: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/tickets/${ticket.id}`, ticket);
+  }
 }

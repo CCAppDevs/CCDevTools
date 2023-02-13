@@ -29,7 +29,7 @@ namespace CCDevTools.Controllers
           {
               return NotFound();
           }
-            return await _context.Tickets.Include(t => t.Project).ToListAsync();
+            return await _context.Tickets.ToListAsync();
         }
 
         // GET: api/Tickets/5
