@@ -1,1 +1,10 @@
-<p>ticket-details works!</p>
+<div class="spinner-border" role="status" *ngIf="ticket.id == 0"></div>
+
+<div *ngIf="ticket.id != 0">
+  <h1>Ticket# {{ ticket.id }}</h1>
+  <h3>Created: {{ ticket.created }}</h3>
+  <a [routerLink]="['/tickets/edit', ticket.id]">Edit this ticket</a>
+  <p>{{ ticket.description }}</p>
+</div>
+
+<pre>{{ticket | json}}</pre>

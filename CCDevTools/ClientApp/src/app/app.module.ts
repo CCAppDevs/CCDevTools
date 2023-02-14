@@ -16,7 +16,9 @@ import { DataService } from './data.service';
 import { ProjectListComponent } from './Project/project-list/project-list.component';
 import { TicketsComponent } from './Ticket/tickets/tickets.component';
 import { TicketDetailsComponent } from './Ticket/ticket-details/ticket-details.component';
+import { TicketEditComponent } from './Ticket/ticket-edit/ticket-edit.component';
 import { ProjectDetailComponent } from './Project/project-detail/project-detail.component';
+import { TicketAddNewComponent } from './Ticket/ticket-add-new/ticket-add-new.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ProjectDetailComponent } from './Project/project-detail/project-detail.
     ProjectDetailComponent,
     TicketsComponent,
     TicketDetailsComponent,
+    TicketEditComponent,
+    TicketAddNewComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,7 +42,9 @@ import { ProjectDetailComponent } from './Project/project-detail/project-detail.
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'tickets', component: TicketsComponent, canActivate: [AuthorizeGuard] },
+      { path: 'tickets/new', component: TicketAddNewComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/:id', component: TicketDetailsComponent, canActivate: [AuthorizeGuard] },
+      { path: 'tickets/edit/:id', component: TicketEditComponent, canActivate: [AuthorizeGuard] },      
       { path: 'projects', component: ProjectListComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/:id', component: ProjectDetailComponent, canActivate: [AuthorizeGuard] },
       { path: 'counter', component: CounterComponent },

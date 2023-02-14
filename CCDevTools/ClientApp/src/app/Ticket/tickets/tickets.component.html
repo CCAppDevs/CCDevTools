@@ -1,7 +1,16 @@
 <h1>Tickets</h1>
-<div *ngIf="tickets.length > 0" class="card-deck">
-  <div *ngFor="let ticket of tickets" class="card">
-    <p class="card-text">{{ ticket.description }}</p>
+<a [routerLink]="['/tickets/new']">Create New Ticket</a>
+
+<div *ngIf="tickets.length > 0">
+  <div *ngFor="let ticket of tickets" class="ticket-item">
+    <div>Ticket#: {{ ticket.id }}</div>
+    <div>Created: {{ ticket.created }}</div>
+    <div>Problem: {{ ticket.description }}</div>
+    <div>Status: {{ ticket.status }}</div>
+    <ul>
+      <li><a [routerLink]="['/tickets', ticket.id]">Details</a></li>
+      <li><a [routerLink]="['/tickets/edit', ticket.id]">Edit</a></li>
+    </ul>
   </div>
 </div>
 
