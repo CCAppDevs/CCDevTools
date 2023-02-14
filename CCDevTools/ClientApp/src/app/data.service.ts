@@ -36,4 +36,23 @@ export class DataService {
   updateTicket(ticket: any): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/tickets/${ticket.id}`, ticket);
   }
+
+  createNewProject(project: any): Observable<any>
+  {
+    return this.http.put<any>(`${this.baseUrl}/projects`, project)
+  }
+
+  updateProject(project: any): Observable<any>
+  {
+    return this.http.put<any>(`${this.baseUrl}/projects/${project.id}`, project);
+  }
+  
+  deleteTicket(id: number): Observable<any>
+  {
+    return this.http.delete<any>(`${this.baseUrl}/tickets/${id}`);
+  }
+
+  deleteProject(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/projects/${id}`);
+  }
 }
