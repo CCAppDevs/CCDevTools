@@ -49,6 +49,7 @@ import { ProjectEditComponent } from './Project/project-edit/project-edit.compon
       { path: 'tickets/edit/:id', component: TicketEditComponent, canActivate: [AuthorizeGuard] },      
       { path: 'projects', component: ProjectListComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/:id', component: ProjectDetailComponent, canActivate: [AuthorizeGuard] },
+      { path: 'projects/:id', component: ProjectEditComponent, canActivate: [AuthorizeGuard] },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
     ])
