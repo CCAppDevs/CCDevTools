@@ -20,6 +20,7 @@ import { TicketEditComponent } from './Ticket/ticket-edit/ticket-edit.component'
 import { ProjectDetailComponent } from './Project/project-detail/project-detail.component';
 import { TicketAddNewComponent } from './Ticket/ticket-add-new/ticket-add-new.component';
 import { ProjectEditComponent } from './Project/project-edit/project-edit.component';
+import { ProjectDeleteComponent } from './Project/project-delete/project-delete.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ProjectEditComponent } from './Project/project-edit/project-edit.compon
     TicketDetailsComponent,
     TicketEditComponent,
     TicketAddNewComponent,
-    ProjectEditComponent
+    ProjectEditComponent,
+    ProjectDeleteComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
