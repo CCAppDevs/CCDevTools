@@ -52,6 +52,7 @@ import { ProjectDeleteComponent } from './Project/project-delete/project-delete.
       { path: 'projects', component: ProjectListComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/:id', component: ProjectDetailComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/:id', component: ProjectEditComponent, canActivate: [AuthorizeGuard] },
+      { path: 'projects/:id', component: ProjectDeleteComponent, canActivate: [AuthorizeGuard] },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
     ])
