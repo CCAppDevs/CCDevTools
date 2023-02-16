@@ -55,4 +55,9 @@ export class DataService {
   deleteProject(id: number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/projects/${id}`);
   }
+
+  // board list
+  getAllBoards(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/taskboards`);
+  }
 }
