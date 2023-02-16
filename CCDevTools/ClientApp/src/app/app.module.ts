@@ -21,6 +21,7 @@ import { ProjectDetailComponent } from './Project/project-detail/project-detail.
 import { TicketAddNewComponent } from './Ticket/ticket-add-new/ticket-add-new.component';
 import { ProjectEditComponent } from './Project/project-edit/project-edit.component';
 import { ProjectDeleteComponent } from './Project/project-delete/project-delete.component';
+import { CreateNewProjectComponent } from './Project/create-new-project/create-new-project.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ProjectDeleteComponent } from './Project/project-delete/project-delete.
     TicketEditComponent,
     TicketAddNewComponent,
     ProjectEditComponent,
-    ProjectDeleteComponent
+    ProjectDeleteComponent,
+    CreateNewProjectComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -48,13 +50,12 @@ import { ProjectDeleteComponent } from './Project/project-delete/project-delete.
       { path: 'tickets', component: TicketsComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/new', component: TicketAddNewComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/:id', component: TicketDetailsComponent, canActivate: [AuthorizeGuard] },
-      { path: 'tickets/edit/:id', component: TicketEditComponent, canActivate: [AuthorizeGuard] },      
+      { path: 'tickets/edit/:id', component: TicketEditComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects', component: ProjectListComponent, canActivate: [AuthorizeGuard] },
+      { path: 'projects/new', component: ProjectListComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/:id', component: ProjectDetailComponent, canActivate: [AuthorizeGuard] },
-      { path: 'projects/:id', component: ProjectEditComponent, canActivate: [AuthorizeGuard] },
-      { path: 'projects/:id', component: ProjectDeleteComponent, canActivate: [AuthorizeGuard] },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+      { path: 'projects/edit/:id', component: ProjectEditComponent, canActivate: [AuthorizeGuard] },
+      { path: 'projects/delete/:id', component: ProjectDeleteComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
   providers: [
