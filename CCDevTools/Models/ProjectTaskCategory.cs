@@ -1,4 +1,6 @@
-﻿namespace CCDevTools.Models
+﻿using Newtonsoft.Json;
+
+namespace CCDevTools.Models
 {
     public class ProjectTaskCategory
     {

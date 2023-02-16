@@ -23,6 +23,7 @@ import { ProjectEditComponent } from './Project/project-edit/project-edit.compon
 import { ProjectDeleteComponent } from './Project/project-delete/project-delete.component';
 import { CreateNewProjectComponent } from './Project/create-new-project/create-new-project.component';
 import { BoardListComponent } from './TaskBoard/board-list/board-list.component';
+import { BoardDetailsComponent } from './TaskBoard/board-details/board-details.component';
 
 @NgModule({
   declarations: [
@@ -39,9 +40,10 @@ import { BoardListComponent } from './TaskBoard/board-list/board-list.component'
     TicketAddNewComponent,
     ProjectEditComponent,
     ProjectDeleteComponent,
-    CreateNewProjectComponent
+    CreateNewProjectComponent,
     ProjectDeleteComponent,
-    BoardListComponent
+    BoardListComponent,
+    BoardDetailsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -55,13 +57,14 @@ import { BoardListComponent } from './TaskBoard/board-list/board-list.component'
       { path: 'tickets/:id', component: TicketDetailsComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/edit/:id', component: TicketEditComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects', component: ProjectListComponent, canActivate: [AuthorizeGuard] },
-      { path: 'projects/new', component: ProjectListComponent, canActivate: [AuthorizeGuard] },
+      { path: 'projects/new', component: CreateNewProjectComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/:id', component: ProjectDetailComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/edit/:id', component: ProjectEditComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/delete/:id', component: ProjectDeleteComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/:id', component: ProjectEditComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/:id', component: ProjectDeleteComponent, canActivate: [AuthorizeGuard] },
       { path: 'boards', component: BoardListComponent, canActivate: [AuthorizeGuard] },
+      { path: 'boards/:id', component: BoardDetailsComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
   providers: [

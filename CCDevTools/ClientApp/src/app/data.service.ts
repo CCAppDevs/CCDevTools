@@ -60,4 +60,8 @@ export class DataService {
   getAllBoards(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/taskboards`);
   }
+
+  getBoardById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/taskboards/${id}`);
+  }
 }

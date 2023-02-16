@@ -23,24 +23,55 @@ namespace CCDevTools.Controllers
 
         // GET: api/TaskBoards
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProjectTaskBoard>>> GetTaskBoards()
+        public async Task<ActionResult<IEnumerable<ProjectBoardViewModel>>> GetTaskBoards()
         {
           if (_context.TaskBoards == null)
           {
               return NotFound();
           }
-            return await _context.TaskBoards.ToListAsync();
+            return await _context.TaskBoards
+                .Include(b => b.Categories)
+                .ThenInclude(c => c.Tasks)
+                .Select(b => new ProjectBoardViewModel
+                {
+                    Id = b.Id,
+                    ProjectId = b.ProjectId,
+                    Name = b.Name,
+                    Description = b.Description,
+                    Categories = b.Categories.Select(c => new ProjectBoardCategoryViewModel {
+                        Id = c.Id,
+                        Name = c.Name,
+                        Tasks = c.Tasks.ToList(),
+                    }).ToList()
+                })
+                .ToListAsync();
         }
 
         // GET: api/TaskBoards/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProjectTaskBoard>> GetProjectTaskBoard(int id)
+        public async Task<ActionResult<ProjectBoardViewModel>> GetProjectTaskBoard(int id)
         {
           if (_context.TaskBoards == null)
           {
               return NotFound();
           }
-            var projectTaskBoard = await _context.TaskBoards.FindAsync(id);
+            var projectTaskBoard = await _context.TaskBoards.Where(b => b.Id == id)
+                .Include(b => b.Categories)
+                .ThenInclude(c => c.Tasks)
+                .Select(b => new ProjectBoardViewModel
+                {
+                    Id = b.Id,
+                    ProjectId = b.ProjectId,
+                    Name = b.Name,
+                    Description = b.Description,
+                    Categories = b.Categories.Select(c => new ProjectBoardCategoryViewModel
+                    {
+                        Id = c.Id,
+                        Name = c.Name,
+                        Tasks = c.Tasks.ToList(),
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync();
 
             if (projectTaskBoard == null)
             {

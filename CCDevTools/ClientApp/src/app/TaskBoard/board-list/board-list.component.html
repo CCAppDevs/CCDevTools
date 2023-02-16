@@ -1,3 +1,14 @@
-<p>board-list works!</p>
+<h1>Project Boards</h1>
+<a [routerLink]="['/boards/new']">Create a new Board</a>
+
+<div class="board-list">
+  <div class="board" *ngFor="let board of boards">
+    <h3>{{ board.name }}</h3>
+    <p>{{ board.description }}</p>
+    <ul>
+      <li><a [routerLink]="['/boards', board.id]">Details</a></li>
+    </ul>
+  </div>
+</div>
 
 <pre>{{ boards | json }}</pre>
