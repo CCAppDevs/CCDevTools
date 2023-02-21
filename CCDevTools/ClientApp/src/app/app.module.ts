@@ -27,6 +27,7 @@ import { BoardDetailsComponent } from './TaskBoard/board-details/board-details.c
 import { BoardNewComponent } from './TaskBoard/board-new/board-new.component';
 import { BoardEditComponent } from './TaskBoard/board-edit/board-edit.component';
 import { BoardDeleteComponent } from './TaskBoard/board-delete/board-delete.component';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { BoardDeleteComponent } from './TaskBoard/board-delete/board-delete.comp
     HttpClientModule,
     FormsModule,
     ApiAuthorizationModule,
+    AlertModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'tickets', component: TicketsComponent, canActivate: [AuthorizeGuard] },
