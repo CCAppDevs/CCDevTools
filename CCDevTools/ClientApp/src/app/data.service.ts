@@ -13,6 +13,8 @@ export class DataService {
     this.baseUrl = base + "api";
   }
 
+// Projects
+
   getAllProjects(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/projects`);
   }
@@ -20,6 +22,20 @@ export class DataService {
   getProjectById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/projects/${id}`);
   }
+
+  createNewProject(project: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/projects`, project)
+  }
+
+  updateProject(project: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/projects/${project.id}`, project);
+  }
+
+  deleteProject(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/projects/${id}`);
+  }
+
+  // tickets
 
   getAllTickets(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/tickets`);
@@ -36,25 +52,12 @@ export class DataService {
   updateTicket(ticket: any): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/tickets/${ticket.id}`, ticket);
   }
-
-  createNewProject(project: any): Observable<any>
-  {
-    return this.http.put<any>(`${this.baseUrl}/projects`, project)
-  }
-
-  updateProject(project: any): Observable<any>
-  {
-    return this.http.put<any>(`${this.baseUrl}/projects/${project.id}`, project);
-  }
   
   deleteTicket(id: number): Observable<any>
   {
     return this.http.delete<any>(`${this.baseUrl}/tickets/${id}`);
   }
-
-  deleteProject(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl}/projects/${id}`);
-  }
+   
 
   // board list
   getAllBoards(): Observable<any[]> {

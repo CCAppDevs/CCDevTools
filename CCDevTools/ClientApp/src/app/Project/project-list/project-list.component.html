@@ -4,5 +4,6 @@
     <h3>Project: {{ project.name }}</h3>
     <h5>Version: {{ project.version }}</h5>
     <p>Description: {{ project.description }}</p>
+    <a *ngIf="project.url" href="{{ project.url }}">Repo</a>
   </div>
 </div>
