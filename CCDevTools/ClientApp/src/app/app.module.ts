@@ -24,6 +24,9 @@ import { ProjectDeleteComponent } from './Project/project-delete/project-delete.
 import { CreateNewProjectComponent } from './Project/create-new-project/create-new-project.component';
 import { BoardListComponent } from './TaskBoard/board-list/board-list.component';
 import { BoardDetailsComponent } from './TaskBoard/board-details/board-details.component';
+import { BoardNewComponent } from './TaskBoard/board-new/board-new.component';
+import { BoardEditComponent } from './TaskBoard/board-edit/board-edit.component';
+import { BoardDeleteComponent } from './TaskBoard/board-delete/board-delete.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { BoardDetailsComponent } from './TaskBoard/board-details/board-details.c
     ProjectDeleteComponent,
     BoardListComponent,
     BoardDetailsComponent,
+    BoardNewComponent,
+    BoardEditComponent,
+    BoardDeleteComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
