@@ -67,4 +67,16 @@ export class DataService {
   getBoardById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/taskboards/${id}`);
   }
+
+  createNewBoard(board: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/taskboards`, board);
+  }
+
+  updateBoard(board: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/taskboards/${board.id}`, board);
+  }
+
+  deleteBoard(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/taskboards/${id}`);
+  }
 }

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -56,6 +56,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     ApiAuthorizationModule,
     AlertModule.forRoot(),
     RouterModule.forRoot([
@@ -72,7 +73,9 @@ import { AlertModule } from 'ngx-bootstrap/alert';
       { path: 'projects/:id', component: ProjectEditComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/:id', component: ProjectDeleteComponent, canActivate: [AuthorizeGuard] },
       { path: 'boards', component: BoardListComponent, canActivate: [AuthorizeGuard] },
+      { path: 'boards/new', component: BoardNewComponent, canActivate: [AuthorizeGuard] },
       { path: 'boards/:id', component: BoardDetailsComponent, canActivate: [AuthorizeGuard] },
+      { path: 'boards/edit/:id', component: BoardEditComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
   providers: [
