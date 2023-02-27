@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -24,6 +24,10 @@ import { ProjectDeleteComponent } from './Project/project-delete/project-delete.
 import { CreateNewProjectComponent } from './Project/create-new-project/create-new-project.component';
 import { BoardListComponent } from './TaskBoard/board-list/board-list.component';
 import { BoardDetailsComponent } from './TaskBoard/board-details/board-details.component';
+import { BoardNewComponent } from './TaskBoard/board-new/board-new.component';
+import { BoardEditComponent } from './TaskBoard/board-edit/board-edit.component';
+import { BoardDeleteComponent } from './TaskBoard/board-delete/board-delete.component';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 @NgModule({
   declarations: [
@@ -44,12 +48,17 @@ import { BoardDetailsComponent } from './TaskBoard/board-details/board-details.c
     ProjectDeleteComponent,
     BoardListComponent,
     BoardDetailsComponent,
+    BoardNewComponent,
+    BoardEditComponent,
+    BoardDeleteComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     ApiAuthorizationModule,
+    AlertModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'tickets', component: TicketsComponent, canActivate: [AuthorizeGuard] },
@@ -64,7 +73,9 @@ import { BoardDetailsComponent } from './TaskBoard/board-details/board-details.c
       { path: 'projects/:id', component: ProjectEditComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/:id', component: ProjectDeleteComponent, canActivate: [AuthorizeGuard] },
       { path: 'boards', component: BoardListComponent, canActivate: [AuthorizeGuard] },
+      { path: 'boards/new', component: BoardNewComponent, canActivate: [AuthorizeGuard] },
       { path: 'boards/:id', component: BoardDetailsComponent, canActivate: [AuthorizeGuard] },
+      { path: 'boards/edit/:id', component: BoardEditComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
   providers: [
