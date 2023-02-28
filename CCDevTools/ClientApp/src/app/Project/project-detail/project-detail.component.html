@@ -1,1 +1,11 @@
-<p>project-detail works!</p>
+<div *ngIf = "project.id != 0">
+<h3>Project# {{ project.id }}</h3>
+    <h1>Project: {{ project.name }}</h1>
+    <h3>Version: {{ project.version }}</h3>
+    <p>Description: {{ project.description }}</p>
+    <a *ngIf="project.url" href="{{ project.url }}">Project Repo</a>
+
+    <ul>
+      <li><a [routerLink]="['/projects']">Project List</a></li>
+    </ul>
+</div>
