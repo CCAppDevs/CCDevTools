@@ -1,15 +1,15 @@
 <h1>Projects</h1>
+<a [routerLink]="['/projects/new']">Create a New Project</a>
 <div *ngIf="projects.length > 0">
   <div *ngFor="let project of projects">
-    <h3>Project: {{ project.name }}</h3>
-    <h5>Version: {{ project.version }}</h5>
-    <p>Description: {{ project.description }}</p>
-    <a *ngIf="project.url" href="{{ project.url }}">Repo</a>
-
-    <pre>{{ projects | json }}</pre>
-
+    <div>Project: {{ project.name }}</div>
+    <div>Version: {{ project.version }}</div>
+    <div><p>Description: {{ project.description }}</p></div>
     <ul>
-    <li><a [routerLink]="['/projects', project.id]">Details</a></li>
-      </ul>
+      <li><a [routerLink]="['/projects', project.id]">Details</a></li>
+      <li><a [routerLink]="['/projects/edit', project.id]">Edit</a></li>
+      <li><a [routerLink]="['/projects/delete', project.id]">Delete</a></li>
+      <li *ngIf ="project.url"><a href="{{ project.url }}" target="_blank">Repo</a></li>
+    </ul>
   </div>
 </div>
