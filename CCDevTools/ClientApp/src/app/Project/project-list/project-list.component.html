@@ -5,5 +5,11 @@
     <h5>Version: {{ project.version }}</h5>
     <p>Description: {{ project.description }}</p>
     <a *ngIf="project.url" href="{{ project.url }}">Repo</a>
+
+    <pre>{{ projects | json }}</pre>
+
+    <ul>
+    <li><a [routerLink]="['/projects', project.id]">Details</a></li>
+      </ul>
   </div>
 </div>
