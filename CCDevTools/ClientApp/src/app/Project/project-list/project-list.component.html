@@ -1,7 +1,7 @@
 <h1>Projects</h1>
 <a [routerLink]="['/projects/new']">Create a New Project</a>
 <div *ngIf="projects.length > 0">
-  <div *ngFor="let project of projects">
+  <div class="project-item" *ngFor="let project of projects">
     <div>Project: {{ project.name }}</div>
     <div>Version: {{ project.version }}</div>
     <div><p>Description: {{ project.description }}</p></div>
