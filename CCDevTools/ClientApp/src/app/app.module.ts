@@ -70,10 +70,9 @@ import { AlertModule } from 'ngx-bootstrap/alert';
       { path: 'projects/:id', component: ProjectDetailComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/edit/:id', component: ProjectEditComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/delete/:id', component: ProjectDeleteComponent, canActivate: [AuthorizeGuard] },
-      { path: 'projects/:id', component: ProjectEditComponent, canActivate: [AuthorizeGuard] },
-      { path: 'projects/:id', component: ProjectDeleteComponent, canActivate: [AuthorizeGuard] },
       { path: 'boards', component: BoardListComponent, canActivate: [AuthorizeGuard] },
       { path: 'boards/new', component: BoardNewComponent, canActivate: [AuthorizeGuard] },
+      { path: 'boards/delete/:id', component: BoardDeleteComponent, canActivate: [AuthorizeGuard] },
       { path: 'boards/:id', component: BoardDetailsComponent, canActivate: [AuthorizeGuard] },
       { path: 'boards/edit/:id', component: BoardEditComponent, canActivate: [AuthorizeGuard] },
     ])
