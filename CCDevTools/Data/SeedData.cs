@@ -22,7 +22,7 @@ namespace CCDevTools.Data
                     Description = "A set of tools for Centralia College Developers",
                     StartDate = DateTime.Now,
                     Version = "0.0.1",
-                    Url = null,
+                    Url = "https://github.com/CCAppDevs/CCDevTools",
                     Tickets = new List<Ticket>
                     {
                         new Ticket
@@ -37,7 +37,61 @@ namespace CCDevTools.Data
                 context.Projects.Add(seed);
 
                 await context.SaveChangesAsync();
+
+                if (context.TaskBoards.Count() == 0)
+                {
+                    ProjectTaskBoard board = new ProjectTaskBoard
+                    {
+                        Name = "CCDevTools",
+                        Description = "The planning board for CCDevTools",
+                        ProjectId = seed.Id,
+                        Categories = new List<ProjectTaskCategory>()
+                        {
+                            new ProjectTaskCategory
+                            {
+                                Name = "User Stories",
+                                Tasks = new List<ProjectTaskItem>()
+                                {
+                                    new ProjectTaskItem
+                                    {
+                                        Description = "As a user I want to be able to log into the system so that I may save my preferences."
+                                    }
+                                }
+                            },
+                            new ProjectTaskCategory
+                            {
+                                Name = "Selected User Stories"
+                            },
+                            new ProjectTaskCategory
+                            {
+                                Name = "Backlog"
+                            },
+                            new ProjectTaskCategory
+                            {
+                                Name = "Current Sprint"
+                            },
+                            new ProjectTaskCategory
+                            {
+                                Name = "In Progress"
+                            },
+                            new ProjectTaskCategory
+                            {
+                                Name = "Testing"
+                            },
+                            new ProjectTaskCategory
+                            {
+                                Name = "Complete"
+                            }
+                        }
+                    };
+
+                    context.TaskBoards.Add(board);
+
+                    await context.SaveChangesAsync();
+                }
             }
+
+            
         }
     }
 }
