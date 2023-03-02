@@ -28,6 +28,10 @@ import { BoardNewComponent } from './TaskBoard/board-new/board-new.component';
 import { BoardEditComponent } from './TaskBoard/board-edit/board-edit.component';
 import { BoardDeleteComponent } from './TaskBoard/board-delete/board-delete.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { SortableModule } from 'ngx-bootstrap/sortable';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CategoryItemComponent } from './TaskBoard/category-item/category-item.component';
+import { TaskItemComponent } from './TaskBoard/task-item/task-item.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +55,8 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     BoardNewComponent,
     BoardEditComponent,
     BoardDeleteComponent,
+    CategoryItemComponent,
+    TaskItemComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -59,6 +65,8 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     ReactiveFormsModule,
     ApiAuthorizationModule,
     AlertModule.forRoot(),
+    SortableModule.forRoot(),
+    BsDropdownModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'tickets', component: TicketsComponent, canActivate: [AuthorizeGuard] },
