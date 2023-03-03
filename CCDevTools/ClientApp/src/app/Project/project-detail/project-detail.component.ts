@@ -15,16 +15,14 @@ export class ProjectDetailComponent implements OnInit {
   constructor(private data: DataService, private route: ActivatedRoute) {
   }
 
-  ngOnInit(): void {
-
-   // this.data.getProjectById(1).subscribe(result => { this.project = result });
-
-    
-    this.route.paramMap.pipe(
-      switchMap(params => {
+  ngOnInit(): void
+  {
+    this.route.paramMap.pipe
+    (
+      switchMap(params =>{
         this.id = Number(params.get('id'));
         return this.data.getProjectById(this.id);
-      })
+        })
     ).subscribe(projectData => {
       console.log(projectData);
       this.project = projectData;

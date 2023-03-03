@@ -1,10 +1,13 @@
-<a [routerLink]="['/projects']">Back to Project List</a>
+<a [routerLink]="['/projects']">Back to Projects</a>
+<h2>Details</h2>
 
-<div *ngIf="project.id != 0">
-  <h3>Project# {{ project.id }}</h3>
-  <h1>Project: {{ project.name }}</h1>
-  <h3>Version: {{ project.version }}</h3>
-  <p>Description: {{ project.description }}</p>
+<div class="details" *ngIf="project.id != 0">
+  <h4>{{ project.name }}</h4>
+    <p>
+    Version: {{ project.version }}<br />
+    Description: {{ project.description }}<br />
+    Identification# {{ project.id }}
+  </p>
   <a *ngIf="project.url" href="{{ project.url }}" target="_blank">Project Repo</a>
 </div>
 
