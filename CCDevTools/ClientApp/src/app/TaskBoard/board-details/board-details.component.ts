@@ -3,6 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { DataService } from '../../data.service';
 
+interface categoryItem {
+  id: number;
+  name: string;
+  tasks: any[];
+}
+
+
 @Component({
   selector: 'app-board-details',
   templateUrl: './board-details.component.html',
@@ -14,6 +21,8 @@ export class BoardDetailsComponent implements OnInit {
   };
   id: number = 0;
 
+  categoryList: categoryItem[] = [];
+
   constructor(private data: DataService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -24,6 +33,7 @@ export class BoardDetailsComponent implements OnInit {
       })
     ).subscribe(result => {
       this.board = result;
+      this.categoryList = this.board.categories;
     });
   }
 

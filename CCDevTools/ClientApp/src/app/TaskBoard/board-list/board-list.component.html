@@ -7,6 +7,7 @@
     <p>{{ board.description }}</p>
     <ul>
       <li><a [routerLink]="['/boards', board.id]">Details</a></li>
+      <li><a [routerLink]="['/boards/delete', board.id]">Delete</a></li>
     </ul>
   </div>
 </div>
