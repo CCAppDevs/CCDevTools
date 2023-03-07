@@ -46,6 +46,7 @@ export class DataService {
   }
 
   createNewTicket(ticket: any): Observable<any> {
+    console.log('creating ticket', ticket);
     return this.http.post<any>(`${this.baseUrl}/tickets`, ticket);
   }
 

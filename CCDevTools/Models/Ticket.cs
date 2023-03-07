@@ -15,6 +15,6 @@ namespace CCDevTools.Models
 
         // nav properties
         public int ProjectId { get; set; } // this models an id
-        public Project Project { get; set; }
+        //public virtual Project Project { get; set; }
     }
 }
