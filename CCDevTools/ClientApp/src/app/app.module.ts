@@ -29,6 +29,7 @@ import { BoardEditComponent } from './TaskBoard/board-edit/board-edit.component'
 import { BoardDeleteComponent } from './TaskBoard/board-delete/board-delete.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { SortableModule } from 'ngx-bootstrap/sortable';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CategoryItemComponent } from './TaskBoard/category-item/category-item.component';
 import { TaskItemComponent } from './TaskBoard/task-item/task-item.component';
@@ -66,6 +67,7 @@ import { TaskItemComponent } from './TaskBoard/task-item/task-item.component';
     ApiAuthorizationModule,
     AlertModule.forRoot(),
     SortableModule.forRoot(),
+    BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
