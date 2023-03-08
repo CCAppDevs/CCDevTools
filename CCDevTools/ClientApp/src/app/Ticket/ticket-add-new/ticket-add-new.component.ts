@@ -28,9 +28,9 @@ export class TicketAddNewComponent implements OnInit {
     let ticket = {
       id: 0,
       description: this.newTicketForm.value.description,
-      //status: this.newTicketForm.value.status,
+      status: this.newTicketForm.value.status,
       projectId: this.newTicketForm.value.projectId,
-      //created: Date.now
+      created: Date.now
     };
 
     console.log('before submit', ticket);
