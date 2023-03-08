@@ -1,0 +1,12 @@
+.board-list {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.board {
+    min-width: 200px;
+    border: 1px solid black;
+    padding: 15px 10px;
+}

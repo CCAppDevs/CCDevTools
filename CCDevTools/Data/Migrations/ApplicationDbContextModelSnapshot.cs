@@ -17,7 +17,7 @@ namespace CCDevTools.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("ProductVersion", "7.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -115,6 +115,74 @@ namespace CCDevTools.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("CCDevTools.Models.ProjectTaskBoard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TaskBoards");
+                });
+
+            modelBuilder.Entity("CCDevTools.Models.ProjectTaskCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProjectTaskBoardId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectTaskBoardId");
+
+                    b.ToTable("TaskCategories");
+                });
+
+            modelBuilder.Entity("CCDevTools.Models.ProjectTaskItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProjectTaskCategoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectTaskCategoryId");
+
+                    b.ToTable("TaskItems");
                 });
 
             modelBuilder.Entity("CCDevTools.Models.Ticket", b =>
@@ -426,15 +494,31 @@ namespace CCDevTools.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("CCDevTools.Models.ProjectTaskCategory", b =>
+                {
+                    b.HasOne("CCDevTools.Models.ProjectTaskBoard", "ProjectTaskBoard")
+                        .WithMany("Categories")
+                        .HasForeignKey("ProjectTaskBoardId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProjectTaskBoard");
+                });
+
+            modelBuilder.Entity("CCDevTools.Models.ProjectTaskItem", b =>
+                {
+                    b.HasOne("CCDevTools.Models.ProjectTaskCategory", null)
+                        .WithMany("Tasks")
+                        .HasForeignKey("ProjectTaskCategoryId");
+                });
+
             modelBuilder.Entity("CCDevTools.Models.Ticket", b =>
                 {
-                    b.HasOne("CCDevTools.Models.Project", "Project")
+                    b.HasOne("CCDevTools.Models.Project", null)
                         .WithMany("Tickets")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -491,6 +575,16 @@ namespace CCDevTools.Data.Migrations
             modelBuilder.Entity("CCDevTools.Models.Project", b =>
                 {
                     b.Navigation("Tickets");
+                });
+
+            modelBuilder.Entity("CCDevTools.Models.ProjectTaskBoard", b =>
+                {
+                    b.Navigation("Categories");
+                });
+
+            modelBuilder.Entity("CCDevTools.Models.ProjectTaskCategory", b =>
+                {
+                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }

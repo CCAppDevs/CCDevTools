@@ -8,13 +8,13 @@ namespace CCDevTools.Models
         [Required]
         public string Description { get; set; }
         [Required]
-        public TicketStatus Status { get; set; }
+        public int Status { get; set; }
         [Required]
         public DateTime Created { get; set; }
         public DateTime? Modified { get; set; }
 
         // nav properties
         public int ProjectId { get; set; } // this models an id
-        public Project Project { get; set; }
+        //public virtual Project Project { get; set; }
     }
 }

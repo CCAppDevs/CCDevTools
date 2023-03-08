@@ -1,0 +1,17 @@
+<h1>Create Board</h1>
+
+<form [formGroup]="boardForm" (ngSubmit)="onSubmit()">
+  <div class="input-group mb-2">
+    <span class="input-group-text">Name</span>
+    <input type="text" class="form-control" formControlName="name">
+  </div>
+  <div class="input-group mb-2">
+    <span class="input-group-text">Project</span>
+    <input type="text" class="form-control" formControlName="projectId">
+  </div>
+  <div class="input-group mb-2">
+    <span class="input-group-text">Description</span>
+    <input type="text" class="form-control" formControlName="description">
+  </div>
+  <input type="submit" class="btn btn-primary">
+</form>

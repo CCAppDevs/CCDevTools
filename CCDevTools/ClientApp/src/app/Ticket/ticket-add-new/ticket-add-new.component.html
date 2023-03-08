@@ -1,0 +1,16 @@
+
+<h1>Create Ticket</h1>
+
+
+<form [formGroup]="newTicketForm" (ngSubmit)="onSubmit()">
+  <div class="input-group mb-2">
+    <span class="input-group-text">Description</span>
+    <input type="text" class="form-control" formControlName="description">
+  </div>
+  <div class="input-group mb-2">
+    <span class="input-group-text">Project</span>
+    <input type="text" class="form-control" formControlName="projectId">
+  </div>
+  <input type="submit" class="btn btn-primary">
+</form>
+

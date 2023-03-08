@@ -1,0 +1,4 @@
+<div class="category-item">
+  <h1>{{ data.name }}</h1>
+  <task-item *ngFor="let task of data.tasks" [task]="task"></task-item>
+</div>

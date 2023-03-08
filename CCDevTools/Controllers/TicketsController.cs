@@ -29,7 +29,7 @@ namespace CCDevTools.Controllers
           {
               return NotFound();
           }
-            return await _context.Tickets.Include(t => t.Project).ToListAsync();
+            return await _context.Tickets.ToListAsync();
         }
 
         // GET: api/Tickets/5
@@ -86,10 +86,12 @@ namespace CCDevTools.Controllers
         [HttpPost]
         public async Task<ActionResult<Ticket>> PostTicket(Ticket ticket)
         {
-          if (_context.Tickets == null)
-          {
-              return Problem("Entity set 'ApplicationDbContext.Tickets'  is null.");
-          }
+            System.Diagnostics.Debug.WriteLine(ticket);
+
+            if (_context.Tickets == null)
+            {
+                return Problem("Entity set 'ApplicationDbContext.Tickets'  is null.");
+}
             _context.Tickets.Add(ticket);
             await _context.SaveChangesAsync();
 

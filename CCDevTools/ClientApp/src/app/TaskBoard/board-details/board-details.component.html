@@ -1,0 +1,17 @@
+<h1>{{ board.name }}</h1>
+<p>{{ board.description }}</p>
+
+<div class="categories row">
+  <category-item class="col" *ngFor="let category of board.categories" [data]="category"></category-item>
+</div>
+
+<ng-template #itemTemplate let-item="item" let-index="index"><span>{{index}}: {{item.value}}</span></ng-template>
+
+<div class="categories row">
+  <bs-sortable
+      [(ngModel)]="categoryList"
+      fieldName="name"
+  ></bs-sortable>
+</div>
+
+<pre>{{ categoryList | json }}</pre>
