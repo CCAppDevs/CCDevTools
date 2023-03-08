@@ -33,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CategoryItemComponent } from './TaskBoard/category-item/category-item.component';
 import { TaskItemComponent } from './TaskBoard/task-item/task-item.component';
+import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { TaskItemComponent } from './TaskBoard/task-item/task-item.component';
     BoardDeleteComponent,
     CategoryItemComponent,
     TaskItemComponent,
+    TicketDeleteComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
