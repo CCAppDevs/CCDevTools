@@ -48,6 +48,7 @@ import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.comp
     TicketDetailsComponent,
     TicketEditComponent,
     TicketAddNewComponent,
+    TicketDeleteComponent,
     ProjectEditComponent,
     ProjectDeleteComponent,
     CreateNewProjectComponent,
@@ -59,7 +60,7 @@ import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.comp
     BoardDeleteComponent,
     CategoryItemComponent,
     TaskItemComponent,
-    TicketDeleteComponent,
+    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -77,6 +78,7 @@ import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.comp
       { path: 'tickets/new', component: TicketAddNewComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/:id', component: TicketDetailsComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/edit/:id', component: TicketEditComponent, canActivate: [AuthorizeGuard] },
+      { path: 'tickets/delete/:id', component: TicketDeleteComponent, canActivate: [AuthorizeGuard], },
       { path: 'projects', component: ProjectListComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/new', component: CreateNewProjectComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/:id', component: ProjectDetailComponent, canActivate: [AuthorizeGuard] },
