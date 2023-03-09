@@ -33,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CategoryItemComponent } from './TaskBoard/category-item/category-item.component';
 import { TaskItemComponent } from './TaskBoard/task-item/task-item.component';
+import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { TaskItemComponent } from './TaskBoard/task-item/task-item.component';
     TicketDetailsComponent,
     TicketEditComponent,
     TicketAddNewComponent,
+    TicketDeleteComponent,
     ProjectEditComponent,
     ProjectDeleteComponent,
     CreateNewProjectComponent,
@@ -58,6 +60,7 @@ import { TaskItemComponent } from './TaskBoard/task-item/task-item.component';
     BoardDeleteComponent,
     CategoryItemComponent,
     TaskItemComponent,
+    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -75,6 +78,7 @@ import { TaskItemComponent } from './TaskBoard/task-item/task-item.component';
       { path: 'tickets/new', component: TicketAddNewComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/:id', component: TicketDetailsComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/edit/:id', component: TicketEditComponent, canActivate: [AuthorizeGuard] },
+      { path: 'tickets/delete/:id', component: TicketDeleteComponent, canActivate: [AuthorizeGuard], },
       { path: 'projects', component: ProjectListComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/new', component: CreateNewProjectComponent, canActivate: [AuthorizeGuard] },
       { path: 'projects/:id', component: ProjectDetailComponent, canActivate: [AuthorizeGuard] },

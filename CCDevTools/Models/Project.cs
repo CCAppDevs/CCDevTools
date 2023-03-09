@@ -15,6 +15,6 @@ namespace CCDevTools.Models
         public string? Url { get; set; }
 
         // Nav Properties
-        public ICollection<Ticket> Tickets { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }

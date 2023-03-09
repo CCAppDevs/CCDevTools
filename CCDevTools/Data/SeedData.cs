@@ -28,7 +28,7 @@ namespace CCDevTools.Data
                         new Ticket
                             {
                                 Description = "Fix the front page",
-                                Status = TicketStatus.Open,
+                                Status = 0,
                                 Created = DateTime.Now
                             }
                     }
