@@ -1,1 +1,11 @@
-<p>project-delete works!</p>
+<div class="spinner-border" *ngIf="!project"></div>
+
+<div *ngIf="project">
+  <h1>WARNING</h1>
+  <h3>You Are About to Permenantly Delete Project {{project.name}}.  Would You Like to Proceed?</h3>
+
+  <div class="btn-group">
+    <div class="btn btn-nope" (click)="onCancel()">Cancel</div>
+    <div class="btn btn-yup"  (click)="onDelete()">Delete</div>
+  </div>
+</div>
