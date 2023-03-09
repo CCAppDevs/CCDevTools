@@ -114,7 +114,7 @@ namespace CCDevTools.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Projects");
+                    b.ToTable("Projects", (string)null);
                 });
 
             modelBuilder.Entity("CCDevTools.Models.ProjectTaskBoard", b =>
@@ -138,7 +138,7 @@ namespace CCDevTools.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TaskBoards");
+                    b.ToTable("TaskBoards", (string)null);
                 });
 
             modelBuilder.Entity("CCDevTools.Models.ProjectTaskCategory", b =>
@@ -160,7 +160,7 @@ namespace CCDevTools.Data.Migrations
 
                     b.HasIndex("ProjectTaskBoardId");
 
-                    b.ToTable("TaskCategories");
+                    b.ToTable("TaskCategories", (string)null);
                 });
 
             modelBuilder.Entity("CCDevTools.Models.ProjectTaskItem", b =>
@@ -182,7 +182,7 @@ namespace CCDevTools.Data.Migrations
 
                     b.HasIndex("ProjectTaskCategoryId");
 
-                    b.ToTable("TaskItems");
+                    b.ToTable("TaskItems", (string)null);
                 });
 
             modelBuilder.Entity("CCDevTools.Models.Ticket", b =>
@@ -213,7 +213,7 @@ namespace CCDevTools.Data.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Tickets");
+                    b.ToTable("Tickets", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.DeviceFlowCodes", b =>
