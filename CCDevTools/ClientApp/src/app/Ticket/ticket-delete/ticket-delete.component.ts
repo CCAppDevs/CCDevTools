@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs';
+import { DataService } from '../../data.service';
 
 @Component({
   selector: 'app-ticket-delete',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TicketDeleteComponent implements OnInit {
 
-  constructor() { }
+  id: number = 0;
+  ticket: any;
+
+  constructor(private router: Router, private data: DataService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.paramMap.pipe(
+      switchMap(params => {
+        this.id = Number(params.get('id'));
+        return this.data.getTicketById(this.id);
+      })
+    ).subscribe(result => {
+      this.ticket = result;
+    });
+  }
+
+  onCancel(): void {
+    this.router.navigate(['tickets']);
+  }
+
+  onDelete(): void {
+    console.log('Deleting');
+
+    this.data.deleteTicket(this.id).subscribe(result => {
+
+      this.router.navigate(['tickets']);
+    });
   }
 
 }

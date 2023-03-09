@@ -6,7 +6,13 @@
   <h6 *ngIf="ticket.modified">Modified: {{ ticket.modified }} </h6>
   <h4>Description</h4>
   <p>{{ ticket.description }}</p>
-  <a [routerLink]="['/tickets/edit', ticket.id]">Edit this ticket</a>
+  
+  <ul>
+    <li> <a [routerLink]="['/tickets/edit', ticket.id]">Edit</a> </li>
+    <li> <a [routerLink]="['/tickets/delete', ticket.id]">Delete</a> </li>
+  </ul>
+ 
+ 
   
 </div>
 
