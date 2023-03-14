@@ -21,7 +21,7 @@ export class ProjectEditComponent implements OnInit {
     id: [0],
     name: [''],
     description: [''],
-    startdate: [Date.now()],
+    startdate: [new Date()],
     version: ['0'],
     url: [''],
     tickets: this.fb.array([])

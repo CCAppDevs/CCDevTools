@@ -13,15 +13,22 @@ export class TicketEditComponent implements OnInit {
 
   id: number = 0;
 
-  ticket = {};
+  ticket = {
+    id: 0,
+    description: "",
+    status: 0,
+    projectId: 0,
+    created: new Date(),
+    modified: new Date()
+  };
 
   ticketForm = this.fb.group({
     id: [0],
     description: [''],
     status: ["0"],
     projectId: ["1"],
-    created: [Date.now()],
-    modified: [Date.now()]
+    created: [new Date()],
+    modified: [new Date()]
   });
 
   constructor(private data: DataService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) { }
@@ -52,8 +59,8 @@ export class TicketEditComponent implements OnInit {
       description: this.ticketForm.value.description,
       status: this.ticketForm.value.status,
       projectId: this.ticketForm.value.projectId,
-      created: Date.now,
-      modified: Date.now
+      created: this.ticket.created,
+      modified: new Date()
     };
 
     console.log('before submit', ticket);
