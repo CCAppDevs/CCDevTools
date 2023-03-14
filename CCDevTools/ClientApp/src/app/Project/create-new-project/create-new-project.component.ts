@@ -15,7 +15,7 @@ export class CreateNewProjectComponent implements OnInit {
     id: [0],
     name: ['Name Text'],
     description: ['Describing text'],
-    startdate: [Date.now()],
+    startdate: [new Date()],
     version: ['0'],
     url: ['url.com'],
     tickets: this.fb.array([])
@@ -31,7 +31,7 @@ export class CreateNewProjectComponent implements OnInit {
       id: 0,
       name: this.newProjectForm.value.name,
       description: this.newProjectForm.value.description,
-      startdate: Date.now,
+      startdate: new Date(),
       version: this.newProjectForm.value.version,
       url: this.newProjectForm.value.url,
       tickets: []

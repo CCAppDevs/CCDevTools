@@ -1,4 +1,11 @@
+<ng-template #itemTemplate let-item="item" let-index="index" class="categories row">
+  <task-item class="col" [task]="item.initData"></task-item>
+</ng-template>
+
 <div class="category-item">
   <h1>{{ data.name }}</h1>
-  <task-item *ngFor="let task of data.tasks" [task]="task"></task-item>
+  <bs-sortable [(ngModel)]="data.tasks"
+               fieldName="name"
+               [itemTemplate]="itemTemplate"></bs-sortable>
+  <!--<task-item *ngFor="let task of data.tasks" [task]="task"></task-item>-->
 </div>
