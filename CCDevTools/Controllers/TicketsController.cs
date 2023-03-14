@@ -60,6 +60,8 @@ namespace CCDevTools.Controllers
                 return BadRequest();
             }
 
+            ticket.Modified = DateTime.Now;
+
             _context.Entry(ticket).State = EntityState.Modified;
 
             try
@@ -91,7 +93,7 @@ namespace CCDevTools.Controllers
             if (_context.Tickets == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Tickets'  is null.");
-}
+            }
             _context.Tickets.Add(ticket);
             await _context.SaveChangesAsync();
 

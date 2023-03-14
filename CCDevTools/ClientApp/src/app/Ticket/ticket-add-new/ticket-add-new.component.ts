@@ -15,8 +15,8 @@ export class TicketAddNewComponent implements OnInit {
     description: ['ticket description'],
     status: ["0"],
     projectId: ["1"],
-    created: [Date.now()],
-    modified: [Date.now()]
+    created: [new Date()],
+    modified: [new Date()]
   });
 
   constructor(private fb: FormBuilder, private data: DataService, private router: Router) { }
@@ -30,7 +30,7 @@ export class TicketAddNewComponent implements OnInit {
       description: this.newTicketForm.value.description,
       status: this.newTicketForm.value.status,
       projectId: this.newTicketForm.value.projectId,
-      created: Date.now
+      created: new Date()
     };
 
     console.log('before submit', ticket);
