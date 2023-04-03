@@ -5,7 +5,7 @@
 namespace CCDevTools.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class initialData : Migration
+    public partial class InitialData : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

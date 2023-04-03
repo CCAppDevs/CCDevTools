@@ -13,7 +13,7 @@ namespace CCDevTools.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20230307050859_initialData")]
-    partial class initialData
+    partial class InitialData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -29,7 +29,7 @@ namespace CCDevTools.Controllers
           {
               return NotFound();
           }
-            return await _context.Projects.ToListAsync();
+            return await _context.Projects.Include(p => p.Tickets).ToListAsync();
         }
 
         // GET: api/Projects/5
@@ -40,7 +40,7 @@ namespace CCDevTools.Controllers
           {
               return NotFound();
           }
-            var project = await _context.Projects.FindAsync(id);
+            var project = await _context.Projects.Include(p => p.Tickets).Where(p => p.Id == id).FirstOrDefaultAsync();
 
             if (project == null)
             {

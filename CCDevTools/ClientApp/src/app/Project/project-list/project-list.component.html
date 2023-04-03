@@ -2,9 +2,11 @@
 <a [routerLink]="['/projects/new']">Create a New Project</a>
 <div *ngIf="projects.length > 0">
   <div class="project-item" *ngFor="let project of projects">
-    <div>Project: {{ project.name }}</div>
-    <div>Version: {{ project.version }}</div>
-    <div><p>Description: {{ project.description }}</p></div>
+    <div><strong>Project</strong>: {{ project.name }}</div>
+    <div><strong>Version</strong>: {{ project.version }}</div>
+    <div><strong>Description</strong>: {{ project.description }}</div>
+    <div><strong>Open Tickets</strong>: {{ project.tickets.length }}</div>
+    <br />
     <div class="btn-group" dropdown>
       <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
               aria-controls="dropdown-animated">
@@ -17,27 +19,5 @@
         <li *ngIf="project.url" role="menuitem"><a class="dropdown-item" href="{{ project.url }}" target="_blank">Repo</a></li>
       </ul>
     </div>
-  
   </div>
 </div>
-
-
-<!--<div class="btn-group" dropdown>
-  <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-          aria-controls="dropdown-animated">
-    Button dropdown <span class="caret"></span>
-  </button>
-  <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
-      role="menu" aria-labelledby="button-animated">
-    <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
-    <li role="menuitem">
-      <a class="dropdown-item" href="#">Another action</a>
-    </li>
-    <li role="menuitem">
-      <a class="dropdown-item" href="#">
-        Something else
-        here
-      </a>
-    </li>
-  </ul>
-</div>-->

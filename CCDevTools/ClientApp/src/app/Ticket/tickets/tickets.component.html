@@ -1,8 +1,15 @@
-<h1>Tickets</h1>
-<a [routerLink]="['/tickets/new']">Create New Ticket</a>
-
-<div *ngIf="tickets.length > 0">
-  <div *ngFor="let ticket of tickets" class="ticket-item">
+<div class="row">
+  <div class="col">
+    <div class="float-start">
+      <h4>Tickets</h4>
+    </div>
+    <div class="float-end">
+      <a class="btn btn-primary btn-sm" [routerLink]="['/tickets/new']">New Ticket <i class="fa-sharp fa-solid fa-bug"></i></a>
+    </div>
+  </div>
+</div>
+<div *ngIf="tickets.length > 0" class="row">
+  <div *ngFor="let ticket of tickets" class="col ticket-item">
     <div>Ticket#: {{ ticket.id }}</div>
     <div>Created: {{ ticket.created }}</div>
     <div>Problem: {{ ticket.description }}</div>
@@ -21,4 +28,4 @@
   </div>
 </div>
 
-<pre>{{ tickets | json }}</pre>
+
