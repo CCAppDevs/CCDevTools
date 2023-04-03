@@ -5,7 +5,7 @@
 namespace CCDevTools.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialData : Migration
+    public partial class AddedVirtualTickets : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

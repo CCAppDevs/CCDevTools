@@ -1,13 +1,28 @@
 <a [routerLink]="['/projects']">Back to Projects</a>
 <h2>Details</h2>
 
-<div class="details" *ngIf="project.id != 0">
-  <h4>{{ project.name }}</h4>
-    <p>
-    Version: {{ project.version }}<br />
-    Description: {{ project.description }}<br />
-    Identification# {{ project.id }}
-  </p>
-  <a *ngIf="project.url" href="{{ project.url }}" target="_blank">Project Repo</a>
+<div class="container details" *ngIf="id != 0">
+  <div class="row">
+    <div class="col">
+      <div class="float-start">
+        <h3>{{ project.name }}</h3>
+      </div>
+      <div class="float-end">
+        <a class="btn btn-secondary" *ngIf="project.url" href="{{ project.url }}" target="_blank">Repository <i class="fa-brands fa-github"></i></a>
+      </div>  
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <strong>Version</strong>: {{ project.version }}<br />
+      <strong>Description</strong>: {{ project.description }}<br />
+      <strong>Project Id</strong>: {{ project.id }}<br />
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col">
+      <app-tickets [tickets]="project.tickets"></app-tickets>
+    </div>
+  </div>
 </div>
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from '../../data.service';
 
 @Component({
@@ -8,14 +8,14 @@ import { DataService } from '../../data.service';
 })
 export class TicketsComponent implements OnInit {
 
-  tickets: any[] = [];
+  @Input() tickets: any[] = [];
 
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
-    this.data.getAllTickets().subscribe(result => {
-      this.tickets = result;
-    });
+    //this.data.getAllTickets().subscribe(result => {
+    //  this.tickets = result;
+    //});
   }
 
 }

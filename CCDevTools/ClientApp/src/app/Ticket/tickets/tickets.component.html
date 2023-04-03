@@ -1,18 +1,31 @@
-<h1>Tickets</h1>
-<a [routerLink]="['/tickets/new']">Create New Ticket</a>
-
-<div *ngIf="tickets.length > 0">
-  <div *ngFor="let ticket of tickets" class="ticket-item">
+<div class="row">
+  <div class="col">
+    <div class="float-start">
+      <h4>Tickets</h4>
+    </div>
+    <div class="float-end">
+      <a class="btn btn-primary btn-sm" [routerLink]="['/tickets/new']">New Ticket <i class="fa-sharp fa-solid fa-bug"></i></a>
+    </div>
+  </div>
+</div>
+<div *ngIf="tickets.length > 0" class="row">
+  <div *ngFor="let ticket of tickets" class="col ticket-item">
     <div>Ticket#: {{ ticket.id }}</div>
     <div>Created: {{ ticket.created }}</div>
     <div>Problem: {{ ticket.description }}</div>
     <div>Status: {{ ticket.status }}</div>
-    <ul>
-      <li><a [routerLink]="['/tickets', ticket.id]">Details</a></li>
-      <li><a [routerLink]="['/tickets/edit', ticket.id]">Edit</a></li>
-      <li><a [routerLink]="['/tickets/delete', ticket.id]">Delete</a></li>
-    </ul>
+    <div class="btn-group" dropdown>
+      <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+              aria-controls="dropdown-animated">
+        Ticket Menu<span class="caret"></span>
+      </button>
+      <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-animated">
+        <li role="menuitem"><a class="dropdown-item" [routerLink]="['/tickets', ticket.id]">Details</a></li>
+        <li role="menuitem"><a class="dropdown-item" [routerLink]="['/tickets/edit', ticket.id]">Edit</a></li>
+        <li role="menuitem"><a class="dropdown-item" [routerLink]="['/tickets/delete', ticket.id]">Delete</a></li>
+      </ul>
+    </div>
   </div>
 </div>
 
-<pre>{{ tickets | json }}</pre>
+

@@ -1,1 +1,25 @@
-<p>ticket-edit works!</p>
+
+<h1>Edit Ticket</h1>
+
+
+<form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+  <div class="input-group mb-2">
+    <span class="input-group-text">Description</span>
+    <input type="text" class="form-control" formControlName="description">
+  </div>
+  <!--<div class="input-group mb-2">
+    <span class="input-group-text">Modified</span>
+    <input type="text" class="form-control" formControlName="modified">
+  </div>-->
+  <div class="input-group mb-2">
+    <span class="input-group-text">Project</span>
+    <input type="text" class="form-control" formControlName="projectId">
+  </div>
+  <input type="submit" class="btn btn-primary">
+</form>
+
+
+
+
+
+<pre>{{ ticket | json }}</pre>
