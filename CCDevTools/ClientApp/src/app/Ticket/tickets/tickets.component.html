@@ -9,10 +9,11 @@
   </div>
 </div>
 <div *ngIf="tickets.length > 0" class="row">
-  <div *ngFor="let ticket of tickets" class="row">
+  <div *ngFor="let ticket of tickets" class="row border border-secondary">
     <div class="col">Ticket#: {{ ticket.id }}</div>
-    <div class="col">Created: {{ ticket.created }}</div>
-    <div class="col">Problem: {{ ticket.description }}</div>
+    <div class="col">Created: {{ ticket.created | slice: 0:10 }}</div>
+    <div class="col">Modified: {{ ticket.modified | slice: 0:10 }}</div>
+    <div class="col">Problem: {{ ticket.description | slice: 0:100 }}</div>
     <div class="col">Status: {{ ticket.status }}</div>
     <div class="col">
       <div class="btn-group" dropdown>
