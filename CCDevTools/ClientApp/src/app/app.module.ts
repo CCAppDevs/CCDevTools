@@ -14,7 +14,7 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { DataService } from './data.service';
 import { ProjectListComponent } from './Project/project-list/project-list.component';
-import { TicketsComponent } from './Ticket/tickets/tickets.component';
+/*import { TicketsComponent } from './Ticket/tickets/tickets.component';*/
 import { TicketDetailsComponent } from './Ticket/ticket-details/ticket-details.component';
 import { TicketEditComponent } from './Ticket/ticket-edit/ticket-edit.component';
 import { ProjectDetailComponent } from './Project/project-detail/project-detail.component';
@@ -44,7 +44,7 @@ import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.comp
     FetchDataComponent,
     ProjectListComponent,
     ProjectDetailComponent,
-    TicketsComponent,
+    /*TicketsComponent,*/
     TicketDetailsComponent,
     TicketEditComponent,
     TicketAddNewComponent,
@@ -74,7 +74,7 @@ import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.comp
     BsDropdownModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'tickets', component: TicketsComponent, canActivate: [AuthorizeGuard] },
+     /* { path: 'tickets', component: TicketsComponent, canActivate: [AuthorizeGuard] },*/
       { path: 'tickets/new', component: TicketAddNewComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/:id', component: TicketDetailsComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/edit/:id', component: TicketEditComponent, canActivate: [AuthorizeGuard] },
