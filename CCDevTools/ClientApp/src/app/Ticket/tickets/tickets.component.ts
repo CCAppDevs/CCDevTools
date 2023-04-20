@@ -9,6 +9,7 @@ import { DataService } from '../../data.service';
 export class TicketsComponent implements OnInit {
 
   @Input() tickets: any[] = [];
+  @Input() projectId: number = 0;
 
   constructor(private data: DataService) { }
 

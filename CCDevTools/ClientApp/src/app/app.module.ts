@@ -75,7 +75,7 @@ import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.comp
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'tickets', component: TicketsComponent, canActivate: [AuthorizeGuard] },
-      { path: 'tickets/new', component: TicketAddNewComponent, canActivate: [AuthorizeGuard] },
+      { path: 'tickets/new/:id', component: TicketAddNewComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/:id', component: TicketDetailsComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/edit/:id', component: TicketEditComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/delete/:id', component: TicketDeleteComponent, canActivate: [AuthorizeGuard], },

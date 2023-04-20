@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../data.service';
 
 @Component({
@@ -9,6 +9,8 @@ import { DataService } from '../../data.service';
   styleUrls: ['./ticket-add-new.component.css']
 })
 export class TicketAddNewComponent implements OnInit {
+
+  projectId: string | null = "";
 
   newTicketForm = this.fb.group({
     id: ["0"],
@@ -19,9 +21,14 @@ export class TicketAddNewComponent implements OnInit {
     modified: [new Date()]
   });
 
-  constructor(private fb: FormBuilder, private data: DataService, private router: Router) { }
+  constructor(private fb: FormBuilder, private data: DataService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.projectId = params.get("id");
+      this.newTicketForm.patchValue({ projectId: this.projectId })
+    });
+
   }
 
   onSubmit() {
