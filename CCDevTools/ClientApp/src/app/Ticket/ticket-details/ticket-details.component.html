@@ -3,10 +3,11 @@
 <div *ngIf="ticket.id != 0">
   <a [routerLink]="['/projects', ticket.projectId]">Back to Project #{{ ticket.projectId }}</a>
   <h2>Ticket #{{ ticket.id }}</h2>
-  <h6>Created: {{ ticket.created }}</h6>
-  <h6 *ngIf="ticket.modified">Modified: {{ ticket.modified }} </h6>
-  <h4>Description</h4>
-  <p>{{ ticket.description }}</p>
+  <div class="date">Created: {{ ticket.created }}</div>
+  <div class="date" *ngIf="ticket.modified">Modified: {{ ticket.modified }} </div><br />
+
+  <p><i><b>Description</b></i><br />
+  {{ ticket.description }}</p>
 
   <div class="btn-group" dropdown>
     <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"

@@ -1,3 +1,7 @@
 p {
     border:1px solid black;
 }
+
+.date {
+    font-size: 12px
+}
