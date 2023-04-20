@@ -2,7 +2,7 @@
 
 <div *ngIf="ticket.id != 0">
   <h1>Ticket# {{ ticket.id }}</h1>
-  <a [routerLink]="['/projects', ticket.projectId]">Back to Projects</a>
+  <a [routerLink]="['/projects', ticket.projectId]">Back to Project {{ ticket.projectId }}</a>
   <h6>Created: {{ ticket.created }}</h6>
   <h6 *ngIf="ticket.modified">Modified: {{ ticket.modified }} </h6>
   <h4>Description</h4>
