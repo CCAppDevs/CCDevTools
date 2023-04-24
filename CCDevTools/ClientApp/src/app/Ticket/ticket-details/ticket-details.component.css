@@ -1,7 +1,16 @@
-p {
+div.describe {
     border:1px solid black;
 }
 
+
+div.title {
+    font-weight: bold;
+    padding: 1em;
+}
+
+div.description {
+    padding: 1em;
+}
 .date {
     font-size: 14px
 }

@@ -6,8 +6,10 @@
   <div class="date">Created: {{ ticket.created | slice: 0:10 }}</div>
   <div class="date" *ngIf="ticket.modified">Modified: {{ ticket.modified | slice: 0:10 }} </div><br />
 
-  <p><i><b>Description</b></i><br />
-  {{ ticket.description }}</p>
+  <div class="describe">
+    <div class="title">Description</div>
+    <div class="description">{{ ticket.description }}</div>
+  </div>
 
   <div class="btn-group" dropdown>
     <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
