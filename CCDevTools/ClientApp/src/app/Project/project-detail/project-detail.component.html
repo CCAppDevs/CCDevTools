@@ -9,7 +9,7 @@
       </div>
       <div class="float-end">
         <a class="btn btn-secondary" *ngIf="project.url" href="{{ project.url }}" target="_blank">Repository <i class="fa-brands fa-github"></i></a>
-      </div>  
+      </div>
     </div>
   </div>
   <div class="row">
@@ -18,6 +18,16 @@
       <strong>Description</strong>: {{ project.description }}<br />
       <strong>Project Id</strong>: {{ project.id }}<br />
     </div>
+  </div>
+  <div class="btn-group" dropdown>
+    <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+            aria-controls="dropdown-animated">
+      Project Menu <span class="caret"></span>
+    </button>
+    <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-animated">
+      <li role="menuitem"><a class="dropdown-item" [routerLink]="['/projects/edit', project.id]">Edit</a></li>
+      <li role="menuitem"><a class="dropdown-item" [routerLink]="['/projects/delete', project.id]">Delete</a></li>
+    </ul>
   </div>
   <div class="row mt-4">
     <div class="col">
