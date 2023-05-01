@@ -7,7 +7,10 @@ import { DataService } from '../../data.service';
   styleUrls: ['./tickets.component.css']
 })
 export class TicketsComponent implements OnInit {
-
+  isShowDiv = true;
+  toggleTicketDiv() {
+    this.isShowDiv = !this.isShowDiv
+  }
   @Input() tickets: any[] = [];
   @Input() projectId: number = 0;
 
