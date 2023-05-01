@@ -73,7 +73,7 @@ import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.comp
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'home', component: HomeComponent, pathMatch: 'full' },
       { path: 'tickets', component: TicketsComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/new/:id', component: TicketAddNewComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/:id', component: TicketDetailsComponent, canActivate: [AuthorizeGuard] },
