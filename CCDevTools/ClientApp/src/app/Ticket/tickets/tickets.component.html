@@ -6,13 +6,13 @@
     </div>
   </div>
 </div>
-<div [hidden]="isShowDiv" *ngIf="tickets.length > 0" class="row">
-  <div  *ngFor="let ticket of tickets" class="row border border-secondary">
-    <div class="col">Ticket#: {{ ticket.id }}</div>
-    <div class="col">Created: {{ ticket.created | slice: 0:10 }}</div>
-    <div class="col">Modified: {{ ticket.modified | slice: 0:10 }}</div>
-    <div class="col">Problem: {{ ticket.description | slice: 0:100 }}</div>
-    <div class="col">Status: {{ ticket.status }}</div>
+<div [hidden]="isShowDiv" *ngIf="tickets.length > 0" class="row m-2">
+  <div *ngFor="let ticket of tickets" class="row border border-primary border-2 rounded m-2">
+    <div class="col"><b>Ticket#:</b> {{ ticket.id }}</div>
+    <div class="col"><b>Created:</b> {{ ticket.created | slice: 0:10 }}</div>
+    <div class="col"><b>Modified:</b> {{ ticket.modified | slice: 0:10 }}</div>
+    <div class="col"><b>Problem:</b> {{ ticket.description | slice: 0:100 }}</div>
+    <div class="col"><b>Status:</b> {{ ticket.status }}</div>
     <div class="col">
       <div class="btn-group" dropdown>
         <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle m-2"
