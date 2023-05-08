@@ -1,23 +1,21 @@
 <div class="row">
   <div class="col">
-    <div class="float-start">
-      <h4>Tickets</h4>
-    </div>
     <div class="float-end">
+      <a class="btn btn-primary btn-sm" (click)=toggleTicketDiv()>Ticket List</a>
       <a class="btn btn-primary btn-sm" [routerLink]="['/tickets/new', projectId]">New Ticket <i class="fa-sharp fa-solid fa-bug"></i></a>
     </div>
   </div>
 </div>
-<div *ngIf="tickets.length > 0" class="row">
-  <div *ngFor="let ticket of tickets" class="row border border-secondary">
-    <div class="col">Ticket#: {{ ticket.id }}</div>
-    <div class="col">Created: {{ ticket.created | slice: 0:10 }}</div>
-    <div class="col">Modified: {{ ticket.modified | slice: 0:10 }}</div>
-    <div class="col">Problem: {{ ticket.description | slice: 0:100 }}</div>
-    <div class="col">Status: {{ ticket.status }}</div>
+<div [hidden]="isShowDiv" *ngIf="tickets.length > 0" class="row m-2">
+  <div *ngFor="let ticket of tickets" class="row border border-primary border-2 rounded m-2">
+    <div class="col"><b>Ticket#:</b> {{ ticket.id }}</div>
+    <div class="col"><b>Created:</b> {{ ticket.created | slice: 0:10 }}</div>
+    <div class="col" *ngIf="ticket.modified"><b>Modified:</b> {{ ticket.modified | slice: 0:10 }}</div>
+    <div class="col"><b>Problem:</b> {{ ticket.description | slice: 0:100 }}</div>
+    <div class="col"><b>Status:</b> {{ ticket.status }}</div>
     <div class="col">
       <div class="btn-group" dropdown>
-        <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+        <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle m-2"
                 aria-controls="dropdown-animated">
           Ticket Menu<span class="caret"></span>
         </button>

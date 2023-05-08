@@ -3,6 +3,7 @@
 <div *ngIf="projects.length > 0">
   <div class="project-item" *ngFor="let project of projects">
     <div><strong>Project</strong>: {{ project.name }}</div>
+    <div><strong>Start Date</strong>: {{ project.startDate | date }}</div>
     <div><strong>Version</strong>: {{ project.version }}</div>
     <div><strong>Description</strong>: {{ project.description }}</div>
     <div><strong>Open Tickets</strong>: {{ project.tickets.length }}</div>
