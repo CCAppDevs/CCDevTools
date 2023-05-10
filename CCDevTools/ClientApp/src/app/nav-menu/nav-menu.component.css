@@ -22,11 +22,11 @@ html {
 }
 
 .nav-link:hover {
-    color: blue;
+    color: cornflowerblue;
 }
 
 .active-link {
-    color:blue;
+    color: darkblue;
 }
 
 

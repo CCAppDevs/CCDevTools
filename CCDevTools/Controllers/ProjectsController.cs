@@ -7,18 +7,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CCDevTools.Data;
 using CCDevTools.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace CCDevTools.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProjectsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IAuthorizationService _auth;
 
-        public ProjectsController(ApplicationDbContext context)
+        public ProjectsController(ApplicationDbContext context, UserManager<ApplicationUser> usr, IAuthorizationService auth)
         {
             _context = context;
+            _userManager = usr;
+            _auth = auth;
         }
 
         // GET: api/Projects
@@ -104,10 +111,19 @@ namespace CCDevTools.Controllers
             {
                 return NotFound();
             }
+
             var project = await _context.Projects.FindAsync(id);
             if (project == null)
             {
                 return NotFound();
+            }
+
+            // only allow if the user is an owner of the project
+            AuthorizationResult result = await _auth.AuthorizeAsync(User, project, "IsOwner");
+
+            if (!result.Succeeded)
+            {
+                return Unauthorized();
             }
 
             _context.Projects.Remove(project);
