@@ -1,7 +1,27 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
 h1{
-    float: left;
-    color: white;
+    position: fixed;
+    top: 120px;
+    left: 70px;
+    z-index: 0;
+    color: dodgerblue;
     border: 2px solid white;
+    background-color: gold;
+    padding: 20px;
+}
+
+.imgbackground {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  max-width: 60%;
+  min-height: 100%;
+  color: black;
 }
 
 .background {
@@ -9,7 +29,7 @@ h1{
   top: 0;
   left: 0;
   z-index: -1;
-  min-width: 100%;
-  min-height: 100%;
-  color: black;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient( to right, dodgerblue 0%, dodgerblue 50% );
 }
