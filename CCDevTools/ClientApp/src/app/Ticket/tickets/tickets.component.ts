@@ -8,6 +8,10 @@ import { DataService } from '../../data.service';
 })
 export class TicketsComponent implements OnInit {
   isShowDiv = true;
+  showAll: boolean = false;
+  toggleShowAll() {
+    this.showAll = !this.showAll
+  }
   toggleTicketDiv() {
     this.isShowDiv = !this.isShowDiv
   }
@@ -21,5 +25,8 @@ export class TicketsComponent implements OnInit {
     //  this.tickets = result;
     //});
   }
+  canShow(status: number) {
+    return status != 10 || this.showAll;
 
+  }
 }
