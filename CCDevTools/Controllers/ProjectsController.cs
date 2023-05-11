@@ -9,6 +9,7 @@ using CCDevTools.Data;
 using CCDevTools.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace CCDevTools.Controllers
 {
@@ -32,11 +33,28 @@ namespace CCDevTools.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
         {
-          if (_context.Projects == null)
-          {
-              return NotFound();
-          }
-            return await _context.Projects.Include(p => p.Tickets).ToListAsync();
+            if (_context.Projects == null)
+            {
+                return NotFound();
+            }
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return NotFound();
+            }
+
+            var membershipList = await _context.Memberships
+                .Where(m => m.UserId == userId)
+                .Select(m => m.ProjectId)
+                .ToListAsync();
+
+
+
+            return await _context.Projects
+                .Where(p => membershipList.Contains(p.Id))
+                .Include(p => p.Tickets).ToListAsync();
         }
 
         // GET: api/Projects/5
@@ -65,6 +83,14 @@ namespace CCDevTools.Controllers
             if (id != project.Id)
             {
                 return BadRequest();
+            }
+
+            // check if we are able to modify the entry (maintainer or better, level 10 or lower)
+            AuthorizationResult result = await _auth.AuthorizeAsync(User, project, "IsMaintainer");
+
+            if (!result.Succeeded)
+            {
+                return Unauthorized();
             }
 
             _context.Entry(project).State = EntityState.Modified;
@@ -97,10 +123,31 @@ namespace CCDevTools.Controllers
           {
               return Problem("Entity set 'ApplicationDbContext.Projects'  is null.");
           }
+
+          // TODO: Add a membership to the new project for the user as an owner
+          var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+            
             _context.Projects.Add(project);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProject", new { id = project.Id }, project);
+            if (project.Id > 0)
+            {
+                _context.Memberships.Add(new Membership
+                {
+                    UserId = userId,
+                    ProjectId = project.Id,
+                    Level = 0
+                });
+            }
+
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetProject", new { id = project.Id });
         }
 
         // DELETE: api/Projects/5

@@ -18,7 +18,8 @@ export class CreateNewProjectComponent implements OnInit {
     startdate: [new Date()],
     version: ['0'],
     url: ['url.com'],
-    tickets: this.fb.array([])
+    tickets: this.fb.array([]),
+    memberships: this.fb.array([])
   });
 
   ngOnInit(): void {
@@ -34,7 +35,8 @@ export class CreateNewProjectComponent implements OnInit {
       startdate: new Date(),
       version: this.newProjectForm.value.version,
       url: this.newProjectForm.value.url,
-      tickets: []
+      tickets: [],
+      memberships: []
     };
 
     console.log('before submit', project)

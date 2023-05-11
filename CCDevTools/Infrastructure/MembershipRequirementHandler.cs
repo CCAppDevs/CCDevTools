@@ -3,6 +3,7 @@ using CCDevTools.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace CCDevTools.Infrastructure
 {
@@ -30,7 +31,7 @@ namespace CCDevTools.Infrastructure
             }
 
             // the user id
-            var userId = _userManager.GetUserId(authContext.User);
+            var userId = authContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             // the membership
             var membership = _context.Memberships

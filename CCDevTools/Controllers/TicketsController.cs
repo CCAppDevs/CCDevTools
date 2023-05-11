@@ -88,6 +88,7 @@ namespace CCDevTools.Controllers
         [HttpPost]
         public async Task<ActionResult<Ticket>> PostTicket(Ticket ticket)
         {
+
             System.Diagnostics.Debug.WriteLine(ticket);
 
             if (_context.Tickets == null)
