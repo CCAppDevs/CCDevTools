@@ -5,13 +5,15 @@
 
 h1{
     position: fixed;
-    top: 120px;
-    left: 70px;
+    top: 13%;
+    left: 4%;
     z-index: 0;
-    color: dodgerblue;
-    border: 2px solid white;
+    color: mediumblue;
+    border: 4px solid white;
+    border-radius: 4px;
     background-color: gold;
     padding: 20px;
+    z-index: -1;
 }
 
 .imgbackground {
@@ -22,6 +24,7 @@ h1{
   max-width: 60%;
   min-height: 100%;
   color: black;
+  border: 2px solid white;
 }
 
 .background {
@@ -31,5 +34,34 @@ h1{
   z-index: -1;
   width: 40%;
   height: 100%;
-  background: linear-gradient( to right, dodgerblue 0%, dodgerblue 50% );
+  background: linear-gradient( to right, navy 0%, blue 50% );
+  border: 2px solid white;
+}
+
+.card {
+  position: fixed;
+  top: 45%;
+  left: 10%;
+  background-color: gold;
+  color: mediumblue;
+  border: 4px solid white;
+}
+
+.card-body {
+    padding: 15px;
+    inline-size: 375px;
+}
+
+.card-title {
+  padding: 10px;
+  color: mediumblue;
+}
+
+.space {
+    padding: 7px;
+}
+
+.btn {
+  background-color: mediumblue;
+  padding: 5px;
 }
