@@ -44,7 +44,7 @@ export class TicketAddNewComponent implements OnInit {
 
     this.data.createNewTicket(ticket).subscribe(results => {
       console.log(results);
-      this.router.navigate(['/tickets', results.id]);
+      this.router.navigate([`projects/${this.projectId}`]);
     });
 
   }
