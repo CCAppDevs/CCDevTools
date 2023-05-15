@@ -10,7 +10,7 @@
     </div>
   </div>
 </div>
-<div [hidden]="isShowDiv" *ngIf="tickets.length > 0" class="row m-2">
+<div [hidden]="isShowDiv" class="row m-2">
   <div *ngFor="let ticket of tickets" >
     <div *ngIf="canShow(ticket.status)" class="row border border-primary border-2 rounded m-2">
       <div class="col"><b>Ticket#:</b> {{ ticket.id }}</div>

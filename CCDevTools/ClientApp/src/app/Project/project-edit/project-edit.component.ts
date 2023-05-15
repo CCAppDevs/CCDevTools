@@ -64,7 +64,8 @@ export class ProjectEditComponent implements OnInit {
       startdate: this.projectForm.value.startdate,
       version: this.projectForm.value.version,
       url: this.projectForm.value.url,
-      tickets: []
+      tickets: [],
+      memberships: []
     };
 
     console.log('before submit', project)
