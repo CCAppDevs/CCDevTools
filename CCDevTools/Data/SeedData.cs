@@ -1,4 +1,5 @@
 ﻿using CCDevTools.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace CCDevTools.Data
 {
@@ -7,14 +8,47 @@ namespace CCDevTools.Data
         public static async Task EnsurePopulated(IServiceProvider services)
         {
             ApplicationDbContext context = services.GetService<ApplicationDbContext>();
+            UserManager<ApplicationUser> userManager = services.GetService<UserManager<ApplicationUser>>();
 
             if (context == null)
             {
                 throw new NullReferenceException("No context available");
             }
 
+            if (userManager == null)
+            {
+                throw new NullReferenceException("No user manager available.");
+            }
+
+            // check if users exist
+            // if not, create them with default passwords
+
+            string username = "test@test.com";
+            string password = "Test!@#4";
+
+            var user = await userManager.FindByEmailAsync(username);
+
+            if (user == null)
+            {
+                user = new ApplicationUser
+                {
+                    UserName = username,
+                    Email = username
+                };
+
+                // create a user
+                var task = await userManager.CreateAsync(user, password);
+            }
+
             if (context.Projects.Count() == 0)
             {
+                user = await userManager.FindByEmailAsync(username);
+
+                if (user == null)
+                {
+                    throw new NullReferenceException("User was not found.");
+                }
+
                 Project seed = new Project
                 {
                     // id blank
@@ -31,7 +65,16 @@ namespace CCDevTools.Data
                                 Status = 0,
                                 Created = DateTime.Now
                             }
+                    },
+                    Memberships = new List<Membership>
+                    {
+                        new Membership
+                        {
+                            Level = 0,
+                            UserId = user.Id
+                        }
                     }
+
                 };
 
                 context.Projects.Add(seed);
