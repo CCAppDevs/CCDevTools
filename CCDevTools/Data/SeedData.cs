@@ -33,7 +33,8 @@ namespace CCDevTools.Data
                 user = new ApplicationUser
                 {
                     UserName = username,
-                    Email = username
+                    Email = username,
+                    EmailConfirmed = true
                 };
 
                 // create a user
