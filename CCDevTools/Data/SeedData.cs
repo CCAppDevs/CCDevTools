@@ -9,6 +9,7 @@ namespace CCDevTools.Data
         {
             ApplicationDbContext context = services.GetService<ApplicationDbContext>();
             UserManager<ApplicationUser> userManager = services.GetService<UserManager<ApplicationUser>>();
+            IConfiguration configuration = services.GetService<IConfiguration>();
 
             if (context == null)
             {
@@ -22,118 +23,121 @@ namespace CCDevTools.Data
 
             // check if users exist
             // if not, create them with default passwords
-
-            string username = "test@test.com";
-            string password = "Test!@#4";
-
-            var user = await userManager.FindByEmailAsync(username);
-
-            if (user == null)
+            
+            for (int i = 0; i < 3; i++)
             {
-                user = new ApplicationUser
-                {
-                    UserName = username,
-                    Email = username,
-                    EmailConfirmed = true
-                };
-
-                // create a user
-                var task = await userManager.CreateAsync(user, password);
-            }
-
-            if (context.Projects.Count() == 0)
-            {
-                user = await userManager.FindByEmailAsync(username);
+                string username = configuration["SeedData:user" + i + ":username"];
+                string password = configuration["SeedData:user" + i + ":password"];
+                var user = await userManager.FindByEmailAsync(username);
 
                 if (user == null)
                 {
-                    throw new NullReferenceException("User was not found.");
-                }
+                    user = new ApplicationUser
+                    {
+                        UserName = username,
+                        Email = username,
+                        EmailConfirmed = true
+                    };
 
-                Project seed = new Project
-                {
-                    // id blank
-                    Name = "CCDevTools",
-                    Description = "A set of tools for Centralia College Developers",
-                    StartDate = DateTime.Now,
-                    Version = "0.0.1",
-                    Url = "https://github.com/CCAppDevs/CCDevTools",
-                    Tickets = new List<Ticket>
+                    // create a user
+                    var task = await userManager.CreateAsync(user, password);
+
+                    user = await userManager.FindByEmailAsync(username);
+
+                    if (user == null)
                     {
-                        new Ticket
-                            {
-                                Description = "Fix the front page",
-                                Status = 0,
-                                Created = DateTime.Now
-                            }
-                    },
-                    Memberships = new List<Membership>
-                    {
-                        new Membership
-                        {
-                            Level = 0,
-                            UserId = user.Id
-                        }
+                        throw new NullReferenceException("User was not found.");
                     }
 
-                };
-
-                context.Projects.Add(seed);
-
-                await context.SaveChangesAsync();
-
-                if (context.TaskBoards.Count() == 0)
-                {
-                    ProjectTaskBoard board = new ProjectTaskBoard
+                    Project seed = new Project
                     {
-                        Name = "CCDevTools",
-                        Description = "The planning board for CCDevTools",
-                        ProjectId = seed.Id,
-                        Categories = new List<ProjectTaskCategory>()
+                        // id blank
+                        Name = username + " project",
+                        Description = "A starter project",
+                        StartDate = DateTime.Now,
+                        Version = "0.0.1",
+                        Url = "https://github.com/CCAppDevs/CCDevTools",
+                        Tickets = new List<Ticket>
                         {
-                            new ProjectTaskCategory
-                            {
-                                Name = "User Stories",
-                                Tasks = new List<ProjectTaskItem>()
+                            new Ticket
                                 {
-                                    new ProjectTaskItem
-                                    {
-                                        Description = "As a user I want to be able to log into the system so that I may save my preferences."
-                                    }
+                                    Description = "Fix the front page",
+                                    Status = 0,
+                                    Created = DateTime.Now
                                 }
-                            },
-                            new ProjectTaskCategory
+                        },
+                        Memberships = new List<Membership>
+                        {
+                            new Membership
                             {
-                                Name = "Selected User Stories"
-                            },
-                            new ProjectTaskCategory
-                            {
-                                Name = "Backlog"
-                            },
-                            new ProjectTaskCategory
-                            {
-                                Name = "Current Sprint"
-                            },
-                            new ProjectTaskCategory
-                            {
-                                Name = "In Progress"
-                            },
-                            new ProjectTaskCategory
-                            {
-                                Name = "Testing"
-                            },
-                            new ProjectTaskCategory
-                            {
-                                Name = "Complete"
+                                Level = 0,
+                                UserId = user.Id
                             }
                         }
                     };
 
-                    context.TaskBoards.Add(board);
+                    context.Projects.Add(seed);
 
                     await context.SaveChangesAsync();
                 }
+
             }
+
+            //if (context.Projects.Count() == 0)
+            //{
+
+            //    if (context.TaskBoards.Count() == 0)
+            //    {
+            //        ProjectTaskBoard board = new ProjectTaskBoard
+            //        {
+            //            Name = "CCDevTools",
+            //            Description = "The planning board for CCDevTools",
+            //            ProjectId = seed.Id,
+            //            Categories = new List<ProjectTaskCategory>()
+            //            {
+            //                new ProjectTaskCategory
+            //                {
+            //                    Name = "User Stories",
+            //                    Tasks = new List<ProjectTaskItem>()
+            //                    {
+            //                        new ProjectTaskItem
+            //                        {
+            //                            Description = "As a user I want to be able to log into the system so that I may save my preferences."
+            //                        }
+            //                    }
+            //                },
+            //                new ProjectTaskCategory
+            //                {
+            //                    Name = "Selected User Stories"
+            //                },
+            //                new ProjectTaskCategory
+            //                {
+            //                    Name = "Backlog"
+            //                },
+            //                new ProjectTaskCategory
+            //                {
+            //                    Name = "Current Sprint"
+            //                },
+            //                new ProjectTaskCategory
+            //                {
+            //                    Name = "In Progress"
+            //                },
+            //                new ProjectTaskCategory
+            //                {
+            //                    Name = "Testing"
+            //                },
+            //                new ProjectTaskCategory
+            //                {
+            //                    Name = "Complete"
+            //                }
+            //            }
+            //        };
+
+            //        context.TaskBoards.Add(board);
+
+            //        await context.SaveChangesAsync();
+            //    }
+            //}
 
             
         }
