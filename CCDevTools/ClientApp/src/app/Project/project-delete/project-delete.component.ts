@@ -29,7 +29,7 @@ export class ProjectDeleteComponent implements OnInit {
 
   onCancel() {
     //this navigates back to the project details page
-    this.router.navigate(['projects']);
+    this.router.navigate([`projects/${this.id}`]);
   }
   onDelete() {
     console.log('deleting');
