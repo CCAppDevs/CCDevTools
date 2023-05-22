@@ -6,6 +6,7 @@
         <span *ngIf="showAll"> Hide Closed</span>
       </a>
       <a class="btn btn-primary btn-sm" (click)="toggleTicketDiv()">Ticket List</a>
+     
       <a class="btn btn-primary btn-sm" [routerLink]="['/tickets/new', projectId]">New Ticket <i class="fa-sharp fa-solid fa-bug"></i></a>
     </div>
   </div>
@@ -21,16 +22,10 @@
       <div class="col" *ngIf="ticket.status == 5"><b>Status:</b> In Progress</div>
       <div class="col" *ngIf="ticket.status == 10"><b>Status:</b> Closed</div>
       <div class="col">
-        <div class="btn-group" dropdown>
-          <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle m-2"
-                  aria-controls="dropdown-animated">
-            Ticket Menu<span class="caret"></span>
-          </button>
-          <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-animated">
-            <li role="menuitem"><a class="dropdown-item" [routerLink]="['/tickets', ticket.id]">Details</a></li>
-            <li role="menuitem"><a class="dropdown-item" [routerLink]="['/tickets/edit', ticket.id]">Edit</a></li>
-            <li role="menuitem"><a class="dropdown-item" [routerLink]="['/tickets/delete', ticket.id]">Delete</a></li>
-          </ul>
+        <div class="btn-group">
+          <a class="btn btn-primary btn-sm" [routerLink]="['/tickets', ticket.id]">Details<i class="fa-regular fa-circle-info"></i></a>
+          <a class="btn btn-primary btn-sm" [routerLink]="['/tickets/edit', ticket.id]">Ticket Edit<i class="fa-solid fa-pen-to-square"></i></a>
+          <a class="btn btn-primary btn-sm" [routerLink]="['/tickets/delete', ticket.id]">Ticket Delete<i class="fa-sharp fa-solid fa-trash"></i></a>
         </div>
       </div>
     </div>
