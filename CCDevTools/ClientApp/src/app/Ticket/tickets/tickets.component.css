@@ -1,9 +1,5 @@
-#problem {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+
 
 #problem:hover {
-    color: blue;
+    opacity: 50%;
 }

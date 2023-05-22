@@ -16,7 +16,7 @@
       <div class="col"><b>Ticket#:</b> {{ ticket.id }}</div>
       <div class="col" *ngIf="!ticket.modified"><b>Created:</b> {{ ticket.created | date }}</div>
       <div class="col" *ngIf="ticket.modified"><b>Modified:</b> {{ ticket.modified | date }}</div>
-      <div class="col" id="problem" [routerLink]="['/tickets', ticket.id]"><b>Problem:</b> {{ ticket.description | slice: 0:100 }}</div>
+      <div class="col text-truncate" id="problem" [routerLink]="['/tickets', ticket.id]"><b>Problem:</b> {{ ticket.description | slice: 0:100 }}</div>
       <div class="col" *ngIf="ticket.status == 0"><b>Status:</b> Open</div>
       <div class="col" *ngIf="ticket.status == 5"><b>Status:</b> In Progress</div>
       <div class="col" *ngIf="ticket.status == 10"><b>Status:</b> Closed</div>
