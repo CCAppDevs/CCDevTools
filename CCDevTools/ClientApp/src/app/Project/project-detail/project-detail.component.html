@@ -6,9 +6,9 @@
       <div class="float-start">
         <h3>{{ project.name }}</h3>
       </div>
-      <div class="float-end">
-        <a class="btn btn-primary" [routerLink]="['/projects/edit', project.id]">Edit<i class="fa-solid fa-pen-to-square"></i></a>
-        <a class="btn btn-primary" [routerLink]="['/projects/delete', project.id]">Delete<i class="fa-sharp fa-solid fa-trash"></i></a>
+      <div class="btn-group float-end">
+        <a class="btn btn-success" [routerLink]="['/projects/edit', project.id]">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+        <a class="btn btn-danger" [routerLink]="['/projects/delete', project.id]">Delete <i class="fa-sharp fa-solid fa-trash"></i></a>
         <a class="btn btn-secondary" *ngIf="project.url" href="{{ project.url }}" target="_blank">Repository <i class="fa-brands fa-github"></i></a>
       </div>
     </div>
