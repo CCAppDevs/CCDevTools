@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace CCDevTools.Controllers
 {
     // TODO: Add authorization for individual owners only
-    [Authorize]
+    // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class InvitationsController : ControllerBase
@@ -103,6 +103,7 @@ namespace CCDevTools.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteInvitation(int id)
         {
+            // TODO: limit deletions to only the owner of the invitation or the user being invited
             if (_context.Invitations == null)
             {
                 return NotFound();

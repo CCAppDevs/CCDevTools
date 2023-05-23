@@ -11,6 +11,7 @@ import { DataService } from '../../data.service';
 export class ProjectDetailComponent implements OnInit {
   project: any = {};
   id: number = 0;
+  isLoaded: boolean = false;
 
   constructor(private data: DataService, private route: ActivatedRoute) {
   }
@@ -26,6 +27,7 @@ export class ProjectDetailComponent implements OnInit {
     ).subscribe(projectData => {
       console.log(projectData);
       this.project = projectData;
+      this.isLoaded = true;
     });
    
   }

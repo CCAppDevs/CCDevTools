@@ -1,6 +1,12 @@
 <a class="btn btn-secondary" [routerLink]="['/projects']">Back to Projects</a>
 
-<div class="container details" *ngIf="id != 0">
+<div class="container details" *ngIf="!isLoaded">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<div class="container details" *ngIf="isLoaded">
   <div class="row">
     <div class="col">
       <div class="float-start">
@@ -17,6 +23,10 @@
       <strong>Version</strong>: {{ project.version }}<br />
       <strong>Description</strong>: {{ project.description }}<br />
       <strong>Project Id</strong>: {{ project.id }}<br />
+      <strong>Open Invitations</strong>: {{ project.invitations.length }}<br />
+      <ul>
+        <li *ngFor="let invitation of project.invitations">{{ invitation.email }}</li>
+      </ul>
     </div>
   </div>
   <div class="btn-group" dropdown>

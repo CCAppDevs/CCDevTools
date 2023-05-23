@@ -54,6 +54,7 @@ namespace CCDevTools.Controllers
 
             return await _context.Projects
                 .Where(p => membershipList.Contains(p.Id))
+                .Include(p => p.Invitations)
                 .Include(p => p.Tickets).ToListAsync();
         }
 
@@ -65,7 +66,11 @@ namespace CCDevTools.Controllers
           {
               return NotFound();
           }
-            var project = await _context.Projects.Include(p => p.Tickets).Where(p => p.Id == id).FirstOrDefaultAsync();
+            var project = await _context.Projects
+                .Include(p => p.Tickets)
+                .Include(p => p.Invitations)
+                .Where(p => p.Id == id)
+                .FirstOrDefaultAsync();
 
             if (project == null)
             {

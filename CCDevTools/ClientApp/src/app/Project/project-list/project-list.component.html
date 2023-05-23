@@ -1,3 +1,5 @@
+<app-pending-invitation></app-pending-invitation>
+
 <h1>Projects</h1>
 <a [routerLink]="['/projects/new']">Create a New Project</a>
 <div *ngIf="projects.length > 0">
@@ -7,6 +9,7 @@
     <div><strong>Version</strong>: {{ project.version }}</div>
     <div><strong>Description</strong>: {{ project.description }}</div>
     <div><strong>Open Tickets</strong>: {{ project.tickets.length }}</div>
+    <div><strong>Open Invitations</strong>: {{ project.invitations.length }}</div>
     <br />
   </div>
 </div>

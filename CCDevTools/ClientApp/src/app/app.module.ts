@@ -34,6 +34,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CategoryItemComponent } from './TaskBoard/category-item/category-item.component';
 import { TaskItemComponent } from './TaskBoard/task-item/task-item.component';
 import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.component';
+import { PendingInvitationComponent } from './pending-invitation/pending-invitation.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.comp
     BoardDeleteComponent,
     CategoryItemComponent,
     TaskItemComponent,
+    PendingInvitationComponent,
     
   ],
   imports: [

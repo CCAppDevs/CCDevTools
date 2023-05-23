@@ -18,5 +18,6 @@ namespace CCDevTools.Models
         public virtual ICollection<Ticket> Tickets { get; set; }
 
         public virtual ICollection<Membership> Memberships { get; set; }
+        public virtual ICollection<Invitation> Invitations { get; set; }
     }
 }
