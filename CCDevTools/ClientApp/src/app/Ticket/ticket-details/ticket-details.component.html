@@ -1,7 +1,7 @@
 <div class="spinner-border" role="status" *ngIf="ticket.id == 0"></div>
 
 <div *ngIf="ticket.id != 0">
-  <a [routerLink]="['/projects', ticket.projectId]">Back to Project #{{ ticket.projectId }}</a>
+  <a class="btn btn-secondary" [routerLink]="['/projects', ticket.projectId]">Back to Project #{{ ticket.projectId }}</a>
   <h2>Ticket #{{ ticket.id }}</h2>
   <div class="date">Created: {{ ticket.created | date }}</div>
   <div class="date" *ngIf="ticket.modified">Modified: {{ ticket.modified | date }} </div><br />

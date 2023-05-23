@@ -1,3 +1,6 @@
+<a class="btn btn-secondary" [routerLink]="['/projects', id]">Back to Project #{{ id }}</a>
+
+
 <h1>Edit Project</h1>
 
 <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
