@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -34,7 +33,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CategoryItemComponent } from './TaskBoard/category-item/category-item.component';
 import { TaskItemComponent } from './TaskBoard/task-item/task-item.component';
 import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.component';
-import { ProfileComponent } from './profile/profile.component';
+import { PendingInvitationComponent } from './pending-invitation/pending-invitation.component';
+import { PendingInvitationComponent } from './pending-invitation/pending-invitation.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +62,7 @@ import { ProfileComponent } from './profile/profile.component';
     CategoryItemComponent,
     TaskItemComponent,
     ProfileComponent,
-    
+    PendingInvintationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

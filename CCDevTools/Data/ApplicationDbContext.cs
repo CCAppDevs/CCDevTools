@@ -15,6 +15,7 @@ namespace CCDevTools.Data
         public DbSet<ProjectTaskCategory> TaskCategories { get; set; }
         public DbSet<ProjectTaskItem> TaskItems { get; set; }
         public DbSet<Membership> Memberships { get; set; }
+        public DbSet<Invitation> Invitations { get; set; }
 
         public ApplicationDbContext(DbContextOptions options, IOptions<OperationalStoreOptions> operationalStoreOptions)
             : base(options, operationalStoreOptions)

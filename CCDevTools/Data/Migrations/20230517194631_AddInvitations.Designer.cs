@@ -4,6 +4,7 @@ using CCDevTools.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CCDevTools.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230517194631_AddInvitations")]
+    partial class AddInvitations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,7 +112,7 @@ namespace CCDevTools.Data.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Invitations", (string)null);
+                    b.ToTable("Invitations");
                 });
 
             modelBuilder.Entity("CCDevTools.Models.Membership", b =>
@@ -136,7 +139,7 @@ namespace CCDevTools.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Memberships", (string)null);
+                    b.ToTable("Memberships");
                 });
 
             modelBuilder.Entity("CCDevTools.Models.Project", b =>
@@ -166,7 +169,7 @@ namespace CCDevTools.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Projects", (string)null);
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("CCDevTools.Models.ProjectTaskBoard", b =>
@@ -190,7 +193,7 @@ namespace CCDevTools.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TaskBoards", (string)null);
+                    b.ToTable("TaskBoards");
                 });
 
             modelBuilder.Entity("CCDevTools.Models.ProjectTaskCategory", b =>
@@ -212,7 +215,7 @@ namespace CCDevTools.Data.Migrations
 
                     b.HasIndex("ProjectTaskBoardId");
 
-                    b.ToTable("TaskCategories", (string)null);
+                    b.ToTable("TaskCategories");
                 });
 
             modelBuilder.Entity("CCDevTools.Models.ProjectTaskItem", b =>
@@ -234,7 +237,7 @@ namespace CCDevTools.Data.Migrations
 
                     b.HasIndex("ProjectTaskCategoryId");
 
-                    b.ToTable("TaskItems", (string)null);
+                    b.ToTable("TaskItems");
                 });
 
             modelBuilder.Entity("CCDevTools.Models.Ticket", b =>
@@ -265,7 +268,7 @@ namespace CCDevTools.Data.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Tickets", (string)null);
+                    b.ToTable("Tickets");
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.DeviceFlowCodes", b =>
