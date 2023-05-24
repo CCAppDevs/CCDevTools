@@ -33,7 +33,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CategoryItemComponent } from './TaskBoard/category-item/category-item.component';
 import { TaskItemComponent } from './TaskBoard/task-item/task-item.component';
 import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.component';
-import { PendingInvitationComponent } from './pending-invitation/pending-invitation.component';
+import { ProfileComponent } from './profile/profile.component';
 import { PendingInvitationComponent } from './pending-invitation/pending-invitation.component';
 
 @NgModule({
@@ -62,7 +62,7 @@ import { PendingInvitationComponent } from './pending-invitation/pending-invitat
     CategoryItemComponent,
     TaskItemComponent,
     ProfileComponent,
-    PendingInvintationComponent
+    PendingInvitationComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
