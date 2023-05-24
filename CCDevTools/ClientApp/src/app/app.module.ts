@@ -34,6 +34,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CategoryItemComponent } from './TaskBoard/category-item/category-item.component';
 import { TaskItemComponent } from './TaskBoard/task-item/task-item.component';
 import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.comp
     BoardDeleteComponent,
     CategoryItemComponent,
     TaskItemComponent,
+    ProfileComponent,
     
   ],
   imports: [
@@ -90,6 +92,7 @@ import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.comp
       { path: 'boards/delete/:id', component: BoardDeleteComponent, canActivate: [AuthorizeGuard] },
       { path: 'boards/:id', component: BoardDetailsComponent, canActivate: [AuthorizeGuard] },
       { path: 'boards/edit/:id', component: BoardEditComponent, canActivate: [AuthorizeGuard] },
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
   providers: [
