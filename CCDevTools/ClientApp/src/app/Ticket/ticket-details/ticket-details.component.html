@@ -2,25 +2,19 @@
 
 <div *ngIf="ticket.id != 0">
   <a class="btn btn-secondary" [routerLink]="['/projects', ticket.projectId]">Back to Project #{{ ticket.projectId }}</a>
+
   <h2>Ticket #{{ ticket.id }}</h2>
-  <div class="date">Created: {{ ticket.created | date }}</div>
-  <div class="date" *ngIf="ticket.modified">Modified: {{ ticket.modified | date }} </div><br />
+  <div class="btn-group float-end">
+    <a class="btn btn-success" [routerLink]="['/tickets/edit', ticket.id]">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+    <a class="btn btn-danger" [routerLink]="['/tickets/delete', ticket.id]">Delete <i class="fa-sharp fa-solid fa-trash"></i></a></div>
+    <div class="date">Created: {{ ticket.created | date }}</div>
+    <div class="date" *ngIf="ticket.modified">Modified: {{ ticket.modified | date }} </div><br />
 
-  <div class="describe">
-    <div class="title">Description</div>
-    <div class="description">{{ ticket.description }}</div>
-  </div>
+    <div class="describe">
+      <div class="title">Description</div>
+      <div class="description">{{ ticket.description }}</div>
+    </div>
 
-  <div class="btn-group" dropdown>
-    <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-            aria-controls="dropdown-animated">
-      Ticket Menu<span class="caret"></span>
-    </button>
-    <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-animated">
-      <li role="menuitem"><a class="dropdown-item" [routerLink]="['/tickets/edit', ticket.id]">Edit</a></li>
-      <li role="menuitem"><a class="dropdown-item" [routerLink]="['/tickets/delete', ticket.id]">Delete</a></li>
-    </ul>
   </div>
-</div>
 
 
