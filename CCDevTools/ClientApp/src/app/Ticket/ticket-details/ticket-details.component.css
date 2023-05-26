@@ -1,9 +1,10 @@
 div.describe {
-    border:1px solid black;
+  border: 2.5px solid black;
+  margin: 10px;
+  padding: 10px;
 }
 
-
-div.title {
+/*div.title {
     font-weight: bold;
     padding: 1em;
 }
@@ -13,4 +14,5 @@ div.description {
 }
 .date {
     font-size: 14px
-}
+}*/
+

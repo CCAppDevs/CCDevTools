@@ -2,19 +2,27 @@
 
 <div *ngIf="ticket.id != 0">
   <a class="btn btn-secondary" [routerLink]="['/projects', ticket.projectId]">Back to Project #{{ ticket.projectId }}</a>
-
-  <h2>Ticket #{{ ticket.id }}</h2>
-  <div class="btn-group float-end">
-    <a class="btn btn-success" [routerLink]="['/tickets/edit', ticket.id]">Edit <i class="fa-solid fa-pen-to-square"></i></a>
-    <a class="btn btn-danger" [routerLink]="['/tickets/delete', ticket.id]">Delete <i class="fa-sharp fa-solid fa-trash"></i></a></div>
-    <div class="date">Created: {{ ticket.created | date }}</div>
-    <div class="date" *ngIf="ticket.modified">Modified: {{ ticket.modified | date }} </div><br />
-
-    <div class="describe">
-      <div class="title">Description</div>
-      <div class="description">{{ ticket.description }}</div>
+  <div class="describe">
+    <div class="row">
+      <div class="col">
+        <div class="float-start">
+          <h3>Ticket #{{ ticket.id }}</h3>
+        </div>
+        <div class="btn-group float-end">
+          <a class="btn btn-success" [routerLink]="['/tickets/edit', ticket.id]">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+          <a class="btn btn-danger" [routerLink]="['/tickets/delete', ticket.id]">Delete <i class="fa-sharp fa-solid fa-trash"></i></a>
+        </div>
+      </div>
     </div>
 
-  </div>
+    <div class="row">
+      <div class="col">
+        <div class="date" *ngIf="ticket.modified"><strong>Modified: </strong>{{ ticket.modified | date }} </div><br />
+        <div class="date"><strong>Created: </strong>{{ ticket.created | date }}</div>
+        <div><strong>Description: </strong>{{ ticket.description }}</div>
+
+      </div>
+
+    </div>
 
 
