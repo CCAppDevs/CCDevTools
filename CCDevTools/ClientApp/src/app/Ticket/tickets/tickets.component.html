@@ -23,7 +23,7 @@
       <div class="col" *ngIf="ticket.status == 5"><b>Status:</b> In Progress</div>
       <div class="col" *ngIf="ticket.status == 10"><b>Status:</b> Closed</div>
       <div class="col">
-        <div class="btn-group">
+        <div class="btn-group p-1">
           <a class="btn btn-secondary btn-sm" [routerLink]="['/tickets', ticket.id]"> Details <i class="fa-solid fa-file"></i></a>
           <a class="btn btn-success btn-sm" [routerLink]="['/tickets/edit', ticket.id]"> Edit <i class="fa-solid fa-pen-to-square"></i></a>
           <a class="btn btn-danger btn-sm" [routerLink]="['/tickets/delete', ticket.id]"> Delete <i class="fa-sharp fa-solid fa-trash"></i></a>
