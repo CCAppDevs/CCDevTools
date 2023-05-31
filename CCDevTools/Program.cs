@@ -29,6 +29,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("IsOwner", policy => policy.Requirements.Add(new LevelRequirement(0)));
     options.AddPolicy("IsMaintainer", policy => policy.Requirements.Add(new LevelRequirement(10)));
     options.AddPolicy("IsMember", policy => policy.Requirements.Add(new LevelRequirement(100)));
+    options.AddPolicy("InvitationMatchesUser", policy => policy.Requirements.Add(new UserMatchesRequirement()));
 });
 
 builder.Services.AddTransient<IAuthorizationHandler, MembershipRequirementHandler>();

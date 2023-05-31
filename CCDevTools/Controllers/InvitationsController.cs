@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using CCDevTools.Data;
 using CCDevTools.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace CCDevTools.Controllers
 {
@@ -18,10 +19,14 @@ namespace CCDevTools.Controllers
     public class InvitationsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IAuthorizationService _auth;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public InvitationsController(ApplicationDbContext context)
+        public InvitationsController(ApplicationDbContext context, UserManager<ApplicationUser> usr, IAuthorizationService auth)
         {
             _context = context;
+            _auth = auth;
+            _userManager = usr;
         }
 
         // GET: api/Invitations
@@ -103,15 +108,26 @@ namespace CCDevTools.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteInvitation(int id)
         {
-            // TODO: limit deletions to only the owner of the invitation or the user being invited
+
             if (_context.Invitations == null)
             {
                 return NotFound();
             }
+
             var invitation = await _context.Invitations.FindAsync(id);
             if (invitation == null)
             {
                 return NotFound();
+            }
+
+            AuthorizationResult matchesUser = await _auth.AuthorizeAsync(User, invitation, "InvitationMatchesUser");
+            var project = _context.Projects.FindAsync(invitation.ProjectId);
+            AuthorizationResult isOwner = await _auth.AuthorizeAsync(User, project, "IsOwner");
+            
+
+            if (!matchesUser.Succeeded && !isOwner.Succeeded)
+            {
+                return Unauthorized();
             }
 
             _context.Invitations.Remove(invitation);
