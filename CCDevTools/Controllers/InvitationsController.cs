@@ -121,9 +121,11 @@ namespace CCDevTools.Controllers
             }
 
             AuthorizationResult matchesUser = await _auth.AuthorizeAsync(User, invitation, "InvitationMatchesUser");
-            AuthorizationResult isOwner = await _auth.AuthorizeAsync(User, invitation, "IsOwner");
+            var project = _context.Projects.FindAsync(invitation.ProjectId);
+            AuthorizationResult isOwner = await _auth.AuthorizeAsync(User, project, "IsOwner");
+            
 
-            if (!matchesUser.Succeeded || !isOwner.Succeeded)
+            if (!matchesUser.Succeeded && !isOwner.Succeeded)
             {
                 return Unauthorized();
             }
