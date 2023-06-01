@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs/operators';
+import { AuthorizeService } from '../../api-authorization/authorize.service';
 import { DataService } from '../data.service';
 
 @Component({
@@ -9,12 +11,20 @@ import { DataService } from '../data.service';
 })
 export class PendingInvitationComponent implements OnInit {
   invitations: any[] = [];
+  username: any;
 
-  constructor(private data: DataService) { }
+  constructor(private data: DataService, private authorizeService: AuthorizeService) { }
 
   ngOnInit(): void {
-    this.data.getPendingInvitationsByEmail("alice@alice.com").subscribe(results => {
-      this.invitations = results;
+    // TODO: TOP PRIORITY, get user email from user data
+
+    this.authorizeService.getUser().pipe(
+      switchMap(u => {
+        this.username = u!.name;
+        return this.data.getPendingInvitationsByEmail(this.username);
+      })
+    ).subscribe(data => {
+      this.invitations = data;
     });
   }
 

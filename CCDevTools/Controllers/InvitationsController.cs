@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Identity;
 namespace CCDevTools.Controllers
 {
     // TODO: Add authorization for individual owners only
-    // [Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class InvitationsController : ControllerBase
@@ -125,15 +125,15 @@ namespace CCDevTools.Controllers
             AuthorizationResult isOwner = await _auth.AuthorizeAsync(User, project, "IsOwner");
             
 
-            if (!matchesUser.Succeeded && !isOwner.Succeeded)
+            if (matchesUser.Succeeded || isOwner.Succeeded)
             {
-                return Unauthorized();
+                _context.Invitations.Remove(invitation);
+                await _context.SaveChangesAsync();
+
+                return NoContent();
             }
 
-            _context.Invitations.Remove(invitation);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return Unauthorized();
         }
 
         private bool InvitationExists(int id)

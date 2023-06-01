@@ -33,6 +33,7 @@ builder.Services.AddAuthorization(options =>
 });
 
 builder.Services.AddTransient<IAuthorizationHandler, MembershipRequirementHandler>();
+builder.Services.AddTransient<IAuthorizationHandler, InvitationMatchesUserRequirementHandler>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
