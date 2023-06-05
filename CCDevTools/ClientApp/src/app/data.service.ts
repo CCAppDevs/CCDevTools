@@ -40,6 +40,12 @@ export class DataService {
     return this.http.get<any[]>(`${this.baseUrl}/invitations`);
   }
 
+  getAllInvitationsByProject(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/invitations`).pipe(
+      map(results => results.filter(invite => invite.projectId == id))
+    );
+  }
+
   getPendingInvitationsByEmail(email: string): Observable<any[]> {
     return this.getAllInvitations().pipe(
       map(results => results.filter(i => i.email == email))

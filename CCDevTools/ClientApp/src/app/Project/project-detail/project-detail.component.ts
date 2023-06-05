@@ -12,6 +12,7 @@ export class ProjectDetailComponent implements OnInit {
   project: any = {};
   id: number = 0;
   isLoaded: boolean = false;
+  isOwner: boolean = true; // TODO: FIX THIS ASAP. SECURITY RISK
 
   constructor(private data: DataService, private route: ActivatedRoute) {
   }

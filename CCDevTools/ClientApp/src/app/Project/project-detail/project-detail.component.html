@@ -26,9 +26,16 @@
       <strong>Description</strong>: {{ project.description }}<br />
       <strong>Project Id</strong>: {{ project.id }}<br />
       <strong>Open Invitations</strong>: {{ project.invitations.length }}<br />
-      <ul>
-        <li *ngFor="let invitation of project.invitations">{{ invitation.email }}</li>
-      </ul>
+    </div>
+  </div>
+  <div *ngIf="isOwner" class="row mt-4">
+    <div class="col">
+      <app-invite-user-form [project]="project"></app-invite-user-form>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col">
+      <app-invitation-list [project]="project"></app-invitation-list>
     </div>
   </div>
   <div class="row mt-4">
