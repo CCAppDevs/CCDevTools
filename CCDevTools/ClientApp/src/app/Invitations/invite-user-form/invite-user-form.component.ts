@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../../data.service';
@@ -18,6 +18,8 @@ export class InviteUserFormComponent implements OnInit {
     level: [100]
   });
 
+  @Output() newInviteEvent = new EventEmitter<any>();
+
   constructor(private data: DataService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
@@ -30,6 +32,18 @@ export class InviteUserFormComponent implements OnInit {
       // add user id here for owner
     });
     console.log("submitting form", this.inviteForm.value);
+
+    let formData = {
+      email: this.inviteForm.value.email,
+      projectId: this.inviteForm.value.projectId,
+      userId: this.inviteForm.value.userId,
+      level: this.inviteForm.value.level
+    }
+
+    this.data.createInvitation(formData).subscribe(data => {
+      console.log(data);
+      this.newInviteEvent.emit(data);
+    });
   }
 
 }

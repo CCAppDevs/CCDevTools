@@ -30,12 +30,12 @@
   </div>
   <div *ngIf="isOwner" class="row mt-4">
     <div class="col">
-      <app-invite-user-form [project]="project"></app-invite-user-form>
+      <app-invite-user-form [project]="project" (newInviteEvent)="onDataChanged()"></app-invite-user-form>
     </div>
   </div>
   <div class="row mt-4">
     <div class="col">
-      <app-invitation-list [project]="project"></app-invitation-list>
+      <app-invitation-list [project]="project" (dataChanged)="onDataChanged()"></app-invitation-list>
     </div>
   </div>
   <div class="row mt-4">

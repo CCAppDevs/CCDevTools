@@ -74,6 +74,14 @@ export class DataService {
     );
   }
 
+  createInvitation(invitation: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/invitations/`, invitation);
+  }
+
+  updateInvitation(invitation: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/invitations/${invitation.invitationId}`, invitation);
+  }
+
   // tickets
 
   getAllTickets(): Observable<any[]> {

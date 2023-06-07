@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DataService } from '../../data.service';
 
 @Component({
@@ -8,21 +8,14 @@ import { DataService } from '../../data.service';
 })
 export class InvitationListComponent implements OnInit {
   @Input() project: any = {};
+  @Output() dataChanged = new EventEmitter<any>();
 
-  constructor(private data: DataService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  onDelete(id: number) {
-    console.log("deleting", id);
-  }
-
-  onEdit(id: number) {
-    console.log("editing", id);
-  }
-
-  onNewInvite() {
-    console.log('adding a new invite');
+  onListUpdate() {
+    this.dataChanged.emit();
   }
 }

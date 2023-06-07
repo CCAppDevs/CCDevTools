@@ -37,6 +37,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PendingInvitationComponent } from './pending-invitation/pending-invitation.component';
 import { InvitationListComponent } from './Invitations/invitation-list/invitation-list.component';
 import { InviteUserFormComponent } from './Invitations/invite-user-form/invite-user-form.component';
+import { InvitationListItemComponent } from './Invitations/invitation-list-item/invitation-list-item.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { InviteUserFormComponent } from './Invitations/invite-user-form/invite-u
     PendingInvitationComponent,
     InvitationListComponent,
     InviteUserFormComponent,
+    InvitationListItemComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

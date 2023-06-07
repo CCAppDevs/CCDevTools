@@ -19,18 +19,28 @@ export class ProjectDetailComponent implements OnInit {
 
   ngOnInit(): void
   {
-    this.route.paramMap.pipe
-    (
-      switchMap(params =>{
-        this.id = Number(params.get('id'));
-        return this.data.getProjectById(this.id);
-        })
-    ).subscribe(projectData => {
-      console.log(projectData);
-      this.project = projectData;
-      this.isLoaded = true;
-    });
+    this.initData();
    
+  }
+
+  initData() {
+    this.route.paramMap.pipe
+      (
+        switchMap(params => {
+          this.id = Number(params.get('id'));
+          return this.data.getProjectById(this.id);
+        })
+      ).subscribe(projectData => {
+        console.log(projectData);
+        this.project = projectData;
+        this.isLoaded = true;
+      });
+  }
+
+  onDataChanged() {
+    // trigger gather data again
+    console.log("reiniting data because of a change");
+    this.initData();
   }
 
 }

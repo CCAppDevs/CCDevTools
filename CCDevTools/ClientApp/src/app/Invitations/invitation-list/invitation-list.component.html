@@ -1,4 +1,4 @@
-<div class="container invitation-list">
+<div class="invitation-list">
   <div class="row">
     <h3>Pending Invitations</h3>
   </div>
@@ -7,15 +7,7 @@
     <div class="col"><strong>Email</strong></div>
     <div class="col"><strong>Level</strong></div>
   </div>
-  <div *ngFor="let invitation of project.invitations" class="row">
-    <div class="col">{{ invitation.invitationId }}</div>
-    <div class="col">{{ invitation.email }}</div>
-    <div class="col">{{ invitation.level }}</div>
-    <div class="col">
-      <div class="btn-group">
-        <a class="btn btn-sm btn-danger" (click)="onDelete(invitation.invitationId)">Delete</a>
-        <a class="btn btn-sm btn-success" (click)="onEdit(invitation.invitationId)">Edit</a>
-      </div>
-    </div>
+  <div *ngFor="let invitation of project.invitations">
+    <app-invitation-list-item [project]="project" [invitation]="invitation" (onUpdate)="onListUpdate()"></app-invitation-list-item>
   </div>
 </div>
