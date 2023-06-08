@@ -7,8 +7,16 @@ import { DataService } from '../../data.service';
   styleUrls: ['./tickets.component.css']
 })
 export class TicketsComponent implements OnInit {
-
+  isShowDiv = true;
+  showAll: boolean = false;
+  toggleShowAll() {
+    this.showAll = !this.showAll
+  }
+  toggleTicketDiv() {
+    this.isShowDiv = !this.isShowDiv
+  }
   @Input() tickets: any[] = [];
+  @Input() projectId: number = 0;
 
   constructor(private data: DataService) { }
 
@@ -17,5 +25,8 @@ export class TicketsComponent implements OnInit {
     //  this.tickets = result;
     //});
   }
+  canShow(status: number) {
+    return status != 10 || this.showAll;
 
+  }
 }

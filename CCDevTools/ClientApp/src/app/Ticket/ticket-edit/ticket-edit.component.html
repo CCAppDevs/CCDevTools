@@ -1,4 +1,6 @@
 
+<a class="btn btn-secondary" [routerLink]="['/tickets', ticket.id]">Back to Ticket #{{ ticket.id }}</a>
+
 <h1>Edit Ticket</h1>
 
 
@@ -13,8 +15,14 @@
   </div>-->
   <div class="input-group mb-2">
     <span class="input-group-text">Project</span>
-    <input type="text" class="form-control" formControlName="projectId">
+    <input type="text" class="form-control" formControlName="projectId" [readonly]="true">
   </div>
+  <div class="input-group mb-2">
+<select class="form-select" formControlName="status">
+  <option *ngFor ="let item of statusTypes" [ngValue] =" item.value">{{ item.name }}</option>
+</select>
+  </div>
+  <br />
   <input type="submit" class="btn btn-primary">
 </form>
 
@@ -22,4 +30,4 @@
 
 
 
-<pre>{{ ticket | json }}</pre>
+

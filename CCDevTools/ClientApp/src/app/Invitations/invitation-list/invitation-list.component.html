@@ -1,0 +1,13 @@
+<div class="invitation-list">
+  <div class="row">
+    <h3>Pending Invitations</h3>
+  </div>
+  <div class="row">
+    <div class="col"><strong>Id</strong></div>
+    <div class="col"><strong>Email</strong></div>
+    <div class="col"><strong>Level</strong></div>
+  </div>
+  <div *ngFor="let invitation of project.invitations">
+    <app-invitation-list-item [project]="project" [invitation]="invitation" (onUpdate)="onListUpdate()"></app-invitation-list-item>
+  </div>
+</div>

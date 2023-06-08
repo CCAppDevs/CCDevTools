@@ -1,0 +1,22 @@
+<h3>Invite a user to this project.</h3>
+
+<form [formGroup]="inviteForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col">
+      <label class="form-label">Email</label>
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" formControlName="email" />
+    </div>
+    <div class="col">
+      <label class="form-label">Level</label>
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" formControlName="level" />
+    </div>
+    <div class="col">
+      <button type="submit" class="btn btn-sm btn-primary">Save</button>
+    </div>
+  </div>
+  
+</form>

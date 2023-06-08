@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -34,6 +33,11 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CategoryItemComponent } from './TaskBoard/category-item/category-item.component';
 import { TaskItemComponent } from './TaskBoard/task-item/task-item.component';
 import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PendingInvitationComponent } from './pending-invitation/pending-invitation.component';
+import { InvitationListComponent } from './Invitations/invitation-list/invitation-list.component';
+import { InviteUserFormComponent } from './Invitations/invite-user-form/invite-user-form.component';
+import { InvitationListItemComponent } from './Invitations/invitation-list-item/invitation-list-item.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,11 @@ import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.comp
     BoardDeleteComponent,
     CategoryItemComponent,
     TaskItemComponent,
-    
+    ProfileComponent,
+    PendingInvitationComponent,
+    InvitationListComponent,
+    InviteUserFormComponent,
+    InvitationListItemComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -74,8 +82,9 @@ import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.comp
     BsDropdownModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'home', component: HomeComponent, pathMatch: 'full' },
       { path: 'tickets', component: TicketsComponent, canActivate: [AuthorizeGuard] },
-      { path: 'tickets/new', component: TicketAddNewComponent, canActivate: [AuthorizeGuard] },
+      { path: 'tickets/new/:id', component: TicketAddNewComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/:id', component: TicketDetailsComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/edit/:id', component: TicketEditComponent, canActivate: [AuthorizeGuard] },
       { path: 'tickets/delete/:id', component: TicketDeleteComponent, canActivate: [AuthorizeGuard], },
@@ -89,6 +98,7 @@ import { TicketDeleteComponent } from './Ticket/ticket-delete/ticket-delete.comp
       { path: 'boards/delete/:id', component: BoardDeleteComponent, canActivate: [AuthorizeGuard] },
       { path: 'boards/:id', component: BoardDetailsComponent, canActivate: [AuthorizeGuard] },
       { path: 'boards/edit/:id', component: BoardEditComponent, canActivate: [AuthorizeGuard] },
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
   providers: [

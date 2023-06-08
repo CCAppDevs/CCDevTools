@@ -1,0 +1,37 @@
+<div *ngIf="!isEditing" class="row">
+  <div class="col">{{ invitation.invitationId }}</div>
+  <div class="col">{{ invitation.email }}</div>
+  <div class="col">{{ invitation.level }}</div>
+  <div class="col">
+    <div class="btn-group">
+      <a class="btn btn-sm btn-danger" (click)="onDelete()">Delete</a>
+      <a class="btn btn-sm btn-success" (click)="onEdit()">Edit</a>
+    </div>
+  </div>
+</div>
+<div *ngIf="isEditing" class="row">
+  <div class="col">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col">
+          <label class="form-label">Email</label>
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" formControlName="email" />
+        </div>
+        <div class="col">
+          <label class="form-label">Level</label>
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" formControlName="level" />
+        </div>
+        <div class="col">
+          <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-secondary">Cancel</button>
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

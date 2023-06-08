@@ -12,7 +12,20 @@ import { DataService } from '../../data.service';
 export class TicketEditComponent implements OnInit {
 
   id: number = 0;
-
+  statusTypes: any[] = [
+    {
+      name: "Open",
+      value: 0
+    },
+    {
+      name: "In Progress",
+      value: 5
+    },
+    {
+      name: "Closed",
+      value: 10
+    }
+  ];
   ticket = {
     id: 0,
     description: "",

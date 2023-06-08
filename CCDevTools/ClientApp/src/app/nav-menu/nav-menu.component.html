@@ -3,7 +3,7 @@
     class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
   >
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">CCDevTools</a>
+      <a class="navbar-brand" [routerLink]="['/home']">CCDevTools</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -23,17 +23,21 @@
           <li class="nav-item"
               [routerLinkActive]="['link-active']"
               [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+            <a class="nav-link" routerLinkActive="active-link" [routerLink]="['/home']">Home</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/projects']">Projects</a>
+            <a class="nav-link" routerLinkActive="active-link" [routerLink]="['/projects']">Projects</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/tickets']">Tickets</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/boards']">Boards</a>
-          </li>
+          <!--<li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link" routerLinkActive="active-link" [routerLink]="['/profile']">Profile</a>
+          </li>-->
+          <!-- Commented out for future use -->
+          <!--<li class="nav-item" [routerLinkActive]="['link-active']">
+    <a class="nav-link text-dark" [routerLink]="['/tickets']">Tickets</a>
+  </li>-->
+          <!--<li class="nav-item" [routerLinkActive]="['link-active']">
+    <a class="nav-link text-dark" [routerLink]="['/boards']">Boards</a>
+  </li>-->
         </ul>
         <app-login-menu></app-login-menu>
       </div>

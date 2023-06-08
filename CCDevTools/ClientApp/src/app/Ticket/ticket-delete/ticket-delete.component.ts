@@ -27,7 +27,7 @@ export class TicketDeleteComponent implements OnInit {
   }
 
   onCancel(): void {
-    this.router.navigate(['tickets']);
+    this.router.navigate([`projects/${this.ticket.projectId}`]);
   }
 
   onDelete(): void {
@@ -35,7 +35,7 @@ export class TicketDeleteComponent implements OnInit {
 
     this.data.deleteTicket(this.id).subscribe(result => {
 
-      this.router.navigate(['tickets']);
+      this.router.navigate([`projects/${this.ticket.projectId}`]);
     });
   }
 

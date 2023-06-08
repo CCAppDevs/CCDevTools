@@ -1,0 +1,4 @@
+<div class="alert alert-primary alert-dismissable fade show" role="alert" *ngFor="let invitation of invitations">
+  You have been invited to project #{{ invitation.projectId }}! <button type="button" class="btn btn-sm btn-primary" (click)="accept(invitation.invitationId)">Click here to accept!</button>.
+  <button type="button" class="btn-close mb-auto" (click)="dismiss(invitation.invitationId)" aria-label="Close"></button>
+</div>

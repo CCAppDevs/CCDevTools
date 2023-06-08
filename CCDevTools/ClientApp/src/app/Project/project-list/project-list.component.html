@@ -1,23 +1,14 @@
+<app-pending-invitation></app-pending-invitation>
+
 <h1>Projects</h1>
-<a [routerLink]="['/projects/new']">Create a New Project</a>
+<a class="btn btn-secondary" [routerLink]="['/projects/new']">Create a New Project</a>
 <div *ngIf="projects.length > 0">
-  <div class="project-item" *ngFor="let project of projects">
+  <div class="project-item" *ngFor="let project of projects" [routerLink]="['/projects', project.id]">
     <div><strong>Project</strong>: {{ project.name }}</div>
+    <div><strong>Start Date</strong>: {{ project.startDate | date }}</div>
     <div><strong>Version</strong>: {{ project.version }}</div>
     <div><strong>Description</strong>: {{ project.description }}</div>
     <div><strong>Open Tickets</strong>: {{ project.tickets.length }}</div>
-    <br />
-    <div class="btn-group" dropdown>
-      <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-              aria-controls="dropdown-animated">
-        Project Menu <span class="caret"></span>
-      </button>
-      <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-animated">
-        <li role="menuitem"><a class="dropdown-item" [routerLink]="['/projects', project.id]">Details</a></li>
-        <li role="menuitem"><a class="dropdown-item" [routerLink]="['/projects/edit', project.id]">Edit</a></li>
-        <li role="menuitem"><a class="dropdown-item" [routerLink]="['/projects/delete', project.id]">Delete</a></li>
-        <li *ngIf="project.url" role="menuitem"><a class="dropdown-item" href="{{ project.url }}" target="_blank">Repo</a></li>
-      </ul>
-    </div>
+    <div><strong>Open Invitations</strong>: {{ project.invitations.length }}</div>
   </div>
 </div>

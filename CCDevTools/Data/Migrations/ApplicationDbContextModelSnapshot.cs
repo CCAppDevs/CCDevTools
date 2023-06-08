@@ -87,6 +87,58 @@ namespace CCDevTools.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("CCDevTools.Models.Invitation", b =>
+                {
+                    b.Property<int>("InvitationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InvitationId"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("InvitationId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("Invitations", (string)null);
+                });
+
+            modelBuilder.Entity("CCDevTools.Models.Membership", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Memberships", (string)null);
+                });
+
             modelBuilder.Entity("CCDevTools.Models.Project", b =>
                 {
                     b.Property<int>("Id")
@@ -494,6 +546,36 @@ namespace CCDevTools.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("CCDevTools.Models.Invitation", b =>
+                {
+                    b.HasOne("CCDevTools.Models.Project", "Project")
+                        .WithMany()
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("CCDevTools.Models.Membership", b =>
+                {
+                    b.HasOne("CCDevTools.Models.Project", "Project")
+                        .WithMany("Memberships")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CCDevTools.Models.ApplicationUser", "User")
+                        .WithMany("Memberships")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("CCDevTools.Models.ProjectTaskCategory", b =>
                 {
                     b.HasOne("CCDevTools.Models.ProjectTaskBoard", "ProjectTaskBoard")
@@ -572,8 +654,15 @@ namespace CCDevTools.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("CCDevTools.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("Memberships");
+                });
+
             modelBuilder.Entity("CCDevTools.Models.Project", b =>
                 {
+                    b.Navigation("Memberships");
+
                     b.Navigation("Tickets");
                 });
 

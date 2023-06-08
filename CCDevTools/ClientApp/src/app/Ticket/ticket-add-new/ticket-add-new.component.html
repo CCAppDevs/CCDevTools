@@ -1,3 +1,4 @@
+<a class="btn btn-secondary" [routerLink]="['/projects', projectId]">Back to Project #{{ projectId }}</a>
 
 <h1>Create Ticket</h1>
 
@@ -9,7 +10,7 @@
   </div>
   <div class="input-group mb-2">
     <span class="input-group-text">Project</span>
-    <input type="text" class="form-control" formControlName="projectId">
+    <input type="text" class="form-control" formControlName="projectId" [readonly]="true">
   </div>
   <input type="submit" class="btn btn-primary">
 </form>

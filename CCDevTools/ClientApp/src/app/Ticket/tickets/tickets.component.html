@@ -1,30 +1,36 @@
 <div class="row">
   <div class="col">
-    <div class="float-start">
-      <h4>Tickets</h4>
-    </div>
     <div class="float-end">
-      <a class="btn btn-primary btn-sm" [routerLink]="['/tickets/new']">New Ticket <i class="fa-sharp fa-solid fa-bug"></i></a>
+      <div class="btn-group me-2">
+        <a *ngIf="!isShowDiv" class="btn btn-secondary btn-sm" (click)="toggleShowAll()">
+          <span *ngIf="!showAll"> Show All</span>
+          <span *ngIf="showAll"> Hide Closed</span>
+        </a>
+        <a class="btn btn-secondary btn-sm" (click)="toggleTicketDiv()">Ticket List</a>
+      </div>
+      <a class="btn btn-primary btn-sm" [routerLink]="['/tickets/new', projectId]">New Ticket <i class="fa-sharp fa-solid fa-bug"></i></a>
     </div>
   </div>
 </div>
-<div *ngIf="tickets.length > 0" class="row">
-  <div *ngFor="let ticket of tickets" class="col ticket-item">
-    <div>Ticket#: {{ ticket.id }}</div>
-    <div>Created: {{ ticket.created }}</div>
-    <div>Problem: {{ ticket.description }}</div>
-    <div>Status: {{ ticket.status }}</div>
-    <div class="btn-group" dropdown>
-      <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-              aria-controls="dropdown-animated">
-        Ticket Menu<span class="caret"></span>
-      </button>
-      <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-animated">
-        <li role="menuitem"><a class="dropdown-item" [routerLink]="['/tickets', ticket.id]">Details</a></li>
-        <li role="menuitem"><a class="dropdown-item" [routerLink]="['/tickets/edit', ticket.id]">Edit</a></li>
-        <li role="menuitem"><a class="dropdown-item" [routerLink]="['/tickets/delete', ticket.id]">Delete</a></li>
-      </ul>
+<div [hidden]="isShowDiv" class="row m-2">
+  <div *ngFor="let ticket of tickets" >
+    <div *ngIf="canShow(ticket.status)" class="row border border-primary border-2 rounded m-2">
+      <div class="col"><b>Ticket#:</b> {{ ticket.id }}</div>
+      <div class="col" *ngIf="!ticket.modified"><b>Created:</b> {{ ticket.created | date }}</div>
+      <div class="col" *ngIf="ticket.modified"><b>Modified:</b> {{ ticket.modified | date }}</div>
+      <div class="col text-truncate" id="problem" [routerLink]="['/tickets', ticket.id]"><b>Problem:</b> {{ ticket.description | slice: 0:100 }}</div>
+      <div class="col" *ngIf="ticket.status == 0"><b>Status:</b> Open</div>
+      <div class="col" *ngIf="ticket.status == 5"><b>Status:</b> In Progress</div>
+      <div class="col" *ngIf="ticket.status == 10"><b>Status:</b> Closed</div>
+      <div class="col">
+        <div class="btn-group p-1">
+          <a class="btn btn-secondary btn-sm" [routerLink]="['/tickets', ticket.id]"> Details <i class="fa-solid fa-file"></i></a>
+          <a class="btn btn-success btn-sm" [routerLink]="['/tickets/edit', ticket.id]"> Edit <i class="fa-solid fa-pen-to-square"></i></a>
+          <a class="btn btn-danger btn-sm" [routerLink]="['/tickets/delete', ticket.id]"> Delete <i class="fa-sharp fa-solid fa-trash"></i></a>
+        </div>
+      </div>
     </div>
+    
   </div>
 </div>
 
